@@ -42,7 +42,7 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--tx);m
 .cnav button:hover{background:var(--p);color:#fff}
 .cgrid{display:grid;grid-template-columns:repeat(7,1fr);padding:8px;gap:3px}
 .cdn{text-align:center;font-size:.69rem;font-weight:800;color:var(--t3);text-transform:uppercase;padding:6px 0}
-.cd{display:flex;flex-direction:column;align-items:stretch;padding:5px 3px 4px;border-radius:10px;cursor:pointer;transition:all .15s;min-height:72px;border:1.5px solid transparent;overflow:hidden}
+.cd{display:flex;flex-direction:column;align-items:stretch;padding:5px 3px 4px;border-radius:10px;cursor:pointer;transition:all .15s;min-height:86px;border:1.5px solid transparent;overflow:hidden}
 .cd:hover{background:var(--bg);border-color:var(--pl)}.cd.today{background:var(--p)}.cd.today .dn{color:#fff;font-weight:900}
 .cd.om{opacity:.22;pointer-events:none}.cd.hev{border-color:var(--pl);background:#f0faf7}.cd.sel{border-color:var(--ac)!important;background:var(--wl)!important}
 .dn{font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:700;color:var(--tx);text-align:center;margin-bottom:3px}
@@ -402,8 +402,9 @@ function rCal() {
       evHtml='<div class="cd-events">';
       sbs.slice(0,2).forEach(function(r){
         var cls=r.pa==='Manhã'?'m':'a';
-        var txt=prim(r.aid)+' → '+prim(r.sid);
-        evHtml+='<div class="cd-ev '+cls+'" title="'+txt+'">'+txt+'</div>';
+        var aus=prim(r.aid), sub=prim(r.sid);
+        evHtml+='<div class="cd-ev '+cls+'" title="'+aus+' → '+sub+'">'+aus+'</div>';
+        evHtml+='<div class="cd-ev '+cls+'" style="opacity:.75" title="'+aus+' → '+sub+'">↳ '+sub+'</div>';
       });
       if(sbs.length>2) evHtml+='<div style="font-size:.52rem;color:var(--t2);text-align:center;padding:1px">+' +(sbs.length-2)+' mais</div>';
       evHtml+='</div>';
