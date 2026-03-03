@@ -3,1723 +3,633 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEIM Elizabeth Regina Aparecida Garcia — Substituições</title>
+<title>NEIM Elizabeth Regina Aparecida Garcia</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --primary: #1a6b5a;
-    --primary-light: #2a8a74;
-    --primary-dark: #134d41;
-    --accent: #f59e0b;
-    --accent-light: #fcd34d;
-    --danger: #ef4444;
-    --danger-light: #fee2e2;
-    --success: #10b981;
-    --success-light: #d1fae5;
-    --warning: #f59e0b;
-    --warning-light: #fef3c7;
-    --info: #3b82f6;
-    --info-light: #dbeafe;
-    --purple: #8b5cf6;
-    --purple-light: #ede9fe;
-    --morning: #f97316;
-    --morning-light: #ffedd5;
-    --afternoon: #6366f1;
-    --afternoon-light: #e0e7ff;
-    --bg: #f0faf7;
-    --bg2: #ffffff;
-    --text: #1e3a34;
-    --text2: #4a7a6e;
-    --text3: #8aaba4;
-    --border: #c8e6df;
-    --shadow: 0 4px 20px rgba(26,107,90,0.10);
-    --radius: 14px;
-    --radius-sm: 8px;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Nunito Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-  }
-
-  /* HEADER */
-  .header {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, var(--primary-light) 100%);
-    color: white;
-    padding: 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 4px 24px rgba(26,107,90,0.25);
-  }
-  .header-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 14px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  .header-icon {
-    width: 48px; height: 48px;
-    background: rgba(255,255,255,0.18);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px;
-    flex-shrink: 0;
-  }
-  .header-title h1 {
-    font-family: 'Nunito', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 900;
-    letter-spacing: -0.3px;
-    line-height: 1.2;
-  }
-  .header-title p {
-    font-size: 0.78rem;
-    opacity: 0.75;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-  .header-nav {
-    display: flex;
-    gap: 6px;
-    margin-left: auto;
-    flex-wrap: wrap;
-  }
-  .nav-btn {
-    background: rgba(255,255,255,0.15);
-    border: 1.5px solid rgba(255,255,255,0.25);
-    color: white;
-    padding: 7px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    font-size: 0.82rem;
-    transition: all 0.2s;
-    display: flex; align-items: center; gap: 6px;
-  }
-  .nav-btn:hover, .nav-btn.active {
-    background: rgba(255,255,255,0.3);
-    border-color: rgba(255,255,255,0.5);
-  }
-  .nav-btn.active {
-    background: white;
-    color: var(--primary);
-  }
-
-  /* LAYOUT */
-  .main {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 24px 20px;
-  }
-
-  /* SECTIONS */
-  .section { display: none; }
-  .section.active { display: block; }
-
-  /* CARDS */
-  .card {
-    background: var(--bg2);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-    overflow: hidden;
-  }
-  .card-header {
-    padding: 18px 22px 14px;
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .card-header h2 {
-    font-family: 'Nunito', sans-serif;
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--primary);
-  }
-  .card-header .icon { font-size: 1.2rem; }
-  .card-body { padding: 20px 22px; }
-
-  /* GRID */
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-
-  /* STAT CARDS */
-  .stat-card {
-    background: var(--bg2);
-    border-radius: var(--radius);
-    padding: 18px 20px;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    display: flex; align-items: center; gap: 14px;
-    transition: transform 0.2s;
-  }
-  .stat-card:hover { transform: translateY(-2px); }
-  .stat-icon {
-    width: 50px; height: 50px;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-    flex-shrink: 0;
-  }
-  .stat-info p { font-size: 0.75rem; color: var(--text2); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
-  .stat-info h3 { font-family: 'Nunito', sans-serif; font-size: 1.8rem; font-weight: 900; color: var(--text); line-height: 1; }
-
-  /* BADGE */
-  .badge {
-    display: inline-flex; align-items: center;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-  }
-  .badge-morning { background: var(--morning-light); color: var(--morning); }
-  .badge-afternoon { background: var(--afternoon-light); color: var(--afternoon); }
-  .badge-integral { background: #fdf2f8; color: #9d174d; }
-  .badge-success { background: var(--success-light); color: var(--success); }
-  .badge-danger { background: var(--danger-light); color: var(--danger); }
-  .badge-warning { background: var(--warning-light); color: var(--warning); }
-  .badge-info { background: var(--info-light); color: var(--info); }
-
-  /* CALENDAR */
-  .calendar-wrap { background: var(--bg2); border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--border); }
-  .cal-header {
-    padding: 16px 20px;
-    display: flex; align-items: center; justify-content: space-between;
-    border-bottom: 1px solid var(--border);
-  }
-  .cal-header h3 { font-family: 'Nunito', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--primary); }
-  .cal-nav { display: flex; gap: 8px; }
-  .cal-nav button {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    color: var(--primary);
-    width: 34px; height: 34px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 700;
-    transition: all 0.2s;
-  }
-  .cal-nav button:hover { background: var(--primary); color: white; }
-  .cal-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    padding: 12px;
-    gap: 4px;
-  }
-  .cal-day-name {
-    text-align: center;
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: var(--text3);
-    text-transform: uppercase;
-    padding: 6px 0;
-    letter-spacing: 0.5px;
-  }
-  .cal-day {
-    aspect-ratio: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 6px 4px 4px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.15s;
-    position: relative;
-    min-height: 52px;
-    border: 1.5px solid transparent;
-  }
-  .cal-day:hover { background: var(--bg); border-color: var(--primary); }
-  .cal-day.today { background: var(--primary-light); }
-  .cal-day.today .day-num { color: white; font-weight: 900; }
-  .cal-day.other-month { opacity: 0.3; pointer-events: none; }
-  .cal-day.has-event { border-color: var(--primary-light); background: var(--bg); }
-  .day-num { font-family: 'Nunito', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--text); }
-  .day-dots { display: flex; gap: 2px; flex-wrap: wrap; justify-content: center; margin-top: 3px; }
-  .day-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-  }
-  .day-dot.morning { background: var(--morning); }
-  .day-dot.afternoon { background: var(--afternoon); }
-
-  /* FORM */
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
-  .form-row.full { grid-template-columns: 1fr; }
-  .form-row.three { grid-template-columns: 1fr 1fr 1fr; }
-  .form-group { display: flex; flex-direction: column; gap: 5px; }
-  .form-group label { font-size: 0.78rem; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: 0.4px; }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    padding: 10px 13px;
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 0.9rem;
-    color: var(--text);
-    background: var(--bg);
-    transition: border-color 0.2s;
-    outline: none;
-  }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus { border-color: var(--primary); background: white; }
-
-  /* BUTTONS */
-  .btn {
-    padding: 10px 20px;
-    border-radius: var(--radius-sm);
-    border: none;
-    cursor: pointer;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    font-size: 0.88rem;
-    transition: all 0.2s;
-    display: inline-flex; align-items: center; gap: 7px;
-  }
-  .btn-primary { background: var(--primary); color: white; }
-  .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
-  .btn-accent { background: var(--accent); color: white; }
-  .btn-accent:hover { background: #d97706; }
-  .btn-danger { background: var(--danger); color: white; }
-  .btn-danger:hover { background: #dc2626; }
-  .btn-ghost { background: var(--bg); color: var(--text); border: 1.5px solid var(--border); }
-  .btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
-  .btn-sm { padding: 6px 12px; font-size: 0.78rem; }
-  .btn-icon { width: 32px; height: 32px; padding: 0; justify-content: center; font-size: 0.9rem; }
-
-  /* TABLE */
-  .table-wrap { overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; }
-  thead tr { background: var(--bg); }
-  th {
-    padding: 11px 14px;
-    text-align: left;
-    font-size: 0.72rem;
-    font-weight: 800;
-    color: var(--text2);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-bottom: 2px solid var(--border);
-    white-space: nowrap;
-  }
-  td {
-    padding: 11px 14px;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.87rem;
-    vertical-align: middle;
-  }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: var(--bg); }
-
-  /* RANKING */
-  .rank-row {
-    display: flex;
-    align-items: center;
-    padding: 11px 16px;
-    border-bottom: 1px solid var(--border);
-    gap: 12px;
-    transition: background 0.15s;
-  }
-  .rank-row:last-child { border-bottom: none; }
-  .rank-row:hover { background: var(--bg); }
-  .rank-num {
-    width: 30px; height: 30px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: 0.82rem;
-    flex-shrink: 0;
-  }
-  .rank-1 { background: #fef3c7; color: #92400e; }
-  .rank-2 { background: #f1f5f9; color: #475569; }
-  .rank-3 { background: #fef2f2; color: #9f1239; }
-  .rank-other { background: var(--bg); color: var(--text2); }
-  .rank-name { font-weight: 700; font-size: 0.9rem; flex: 1; }
-  .rank-turma { font-size: 0.78rem; color: var(--text2); }
-  .rank-points {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: 1rem;
-    color: var(--primary);
-  }
-  .rank-bar-wrap { flex: 1; max-width: 120px; }
-  .rank-bar { height: 6px; background: var(--border); border-radius: 10px; overflow: hidden; }
-  .rank-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-light)); border-radius: 10px; transition: width 0.5s; }
-  .next-badge {
-    background: var(--accent);
-    color: white;
-    padding: 2px 8px;
-    border-radius: 20px;
-    font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 0.3px;
-  }
-
-  /* MODAL */
-  .modal-overlay {
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: 1000;
-    display: flex; align-items: center; justify-content: center;
-    padding: 20px;
-    opacity: 0; pointer-events: none;
-    transition: opacity 0.2s;
-  }
-  .modal-overlay.open { opacity: 1; pointer-events: all; }
-  .modal {
-    background: white;
-    border-radius: var(--radius);
-    max-width: 600px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-    transform: scale(0.95);
-    transition: transform 0.2s;
-  }
-  .modal-overlay.open .modal { transform: scale(1); }
-  .modal-header {
-    padding: 20px 22px 16px;
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .modal-header h3 { font-family: 'Nunito', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--primary); }
-  .modal-close {
-    width: 32px; height: 32px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem;
-    transition: all 0.2s;
-  }
-  .modal-close:hover { background: var(--danger); color: white; border-color: var(--danger); }
-  .modal-body { padding: 20px 22px; }
-  .modal-footer {
-    padding: 14px 22px;
-    border-top: 1px solid var(--border);
-    display: flex; gap: 10px; justify-content: flex-end;
-  }
-
-  /* ALERT */
-  .alert {
-    padding: 12px 16px;
-    border-radius: var(--radius-sm);
-    font-size: 0.85rem;
-    font-weight: 600;
-    display: flex; align-items: flex-start; gap: 10px;
-    margin-bottom: 14px;
-  }
-  .alert-warning { background: var(--warning-light); color: #92400e; border-left: 3px solid var(--warning); }
-  .alert-info { background: var(--info-light); color: #1e40af; border-left: 3px solid var(--info); }
-  .alert-success { background: var(--success-light); color: #065f46; border-left: 3px solid var(--success); }
-  .alert-danger { background: var(--danger-light); color: #991b1b; border-left: 3px solid var(--danger); }
-
-  /* TOAST */
-  .toast-container { position: fixed; top: 80px; right: 20px; z-index: 2000; display: flex; flex-direction: column; gap: 8px; }
-  .toast {
-    background: white;
-    border-radius: var(--radius-sm);
-    padding: 12px 16px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-    display: flex; align-items: center; gap: 10px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border-left: 4px solid var(--success);
-    min-width: 260px;
-    animation: slideIn 0.3s ease;
-  }
-  @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-  .toast.error { border-left-color: var(--danger); }
-  .toast.warning { border-left-color: var(--warning); }
-
-  /* PERIOD INDICATOR */
-  .period-pill {
-    display: inline-flex; align-items: center; gap: 5px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 0.76rem;
-    font-weight: 700;
-  }
-  .period-pill.morning { background: var(--morning-light); color: var(--morning); }
-  .period-pill.afternoon { background: var(--afternoon-light); color: var(--afternoon); }
-  .period-pill.integral { background: #fdf2f8; color: #9d174d; }
-
-  /* EMPTY STATE */
-  .empty-state {
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--text3);
-  }
-  .empty-state .icon { font-size: 2.5rem; margin-bottom: 10px; }
-  .empty-state p { font-size: 0.9rem; }
-
-  /* SCROLLBAR */
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    .grid-4 { grid-template-columns: repeat(2, 1fr); }
-    .grid-3 { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 700px) {
-    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-    .form-row, .form-row.three { grid-template-columns: 1fr; }
-    .header-nav { gap: 4px; }
-    .nav-btn span { display: none; }
-    .main { padding: 16px 12px; }
-    .cal-day { min-height: 40px; }
-    .day-num { font-size: 0.78rem; }
-  }
-
-  /* TABS */
-  .tabs { display: flex; gap: 4px; border-bottom: 2px solid var(--border); margin-bottom: 20px; }
-  .tab-btn {
-    padding: 9px 16px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    font-size: 0.85rem;
-    color: var(--text2);
-    border-bottom: 2px solid transparent;
-    margin-bottom: -2px;
-    transition: all 0.2s;
-  }
-  .tab-btn:hover { color: var(--primary); }
-  .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; }
-
-  /* MOTIVO COLORS */
-  .motivo-abonada { background: #f0fdf4; color: #166534; }
-  .motivo-clm { background: #eff6ff; color: #1d4ed8; }
-  .motivo-maternidade { background: #fdf2f8; color: #9d174d; }
-  .motivo-gala { background: #fffbeb; color: #92400e; }
-  .motivo-nojo { background: #f5f3ff; color: #5b21b6; }
-  .motivo-outro { background: #f9fafb; color: #374151; }
-
-  .section-title {
-    font-family: 'Nunito', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 900;
-    color: var(--primary);
-    margin-bottom: 6px;
-  }
-  .section-sub {
-    font-size: 0.85rem;
-    color: var(--text2);
-    margin-bottom: 22px;
-  }
-
-  .divider { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
-
-  .chip {
-    display: inline-flex; align-items: center; gap: 4px;
-    padding: 3px 9px;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    background: var(--bg);
-    color: var(--text2);
-    border: 1px solid var(--border);
-  }
-
-  .recusa-tag {
-    background: #fef2f2;
-    color: #991b1b;
-    padding: 2px 7px;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 700;
-  }
-
-  /* PROFESSOR CARD */
-  .prof-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    transition: all 0.2s;
-    cursor: pointer;
-  }
-  .prof-card:hover { border-color: var(--primary); box-shadow: 0 4px 16px rgba(26,107,90,0.12); }
-  .prof-avatar {
-    width: 42px; height: 42px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    color: white;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: 1rem;
-    flex-shrink: 0;
-  }
-  .prof-info { flex: 1; min-width: 0; }
-  .prof-name { font-weight: 700; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .prof-meta { font-size: 0.75rem; color: var(--text2); }
-  .prof-points { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.1rem; color: var(--primary); }
-
-  .search-box {
-    position: relative;
-    margin-bottom: 16px;
-  }
-  .search-box input {
-    width: 100%;
-    padding: 10px 14px 10px 38px;
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 0.9rem;
-    background: var(--bg);
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .search-box input:focus { border-color: var(--primary); background: white; }
-  .search-box::before {
-    content: '🔍';
-    position: absolute;
-    left: 11px; top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.85rem;
-  }
-
-  /* INDICATOR */
-  .next-indicator {
-    background: linear-gradient(135deg, var(--accent) 0%, #f97316 100%);
-    color: white;
-    border-radius: var(--radius);
-    padding: 14px 18px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 16px rgba(245,158,11,0.3);
-  }
-  .next-indicator .icon { font-size: 2rem; }
-  .next-indicator h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.8rem; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.4px; }
-  .next-indicator .name { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.15rem; }
-  .next-indicator .meta { font-size: 0.78rem; opacity: 0.85; }
+:root{--p:#1a6b5a;--pl:#2a8a74;--pd:#134d41;--ac:#f59e0b;--dn:#ef4444;--dl:#fee2e2;--sc:#10b981;--sl:#d1fae5;--wn:#f59e0b;--wl:#fef3c7;--in:#3b82f6;--il:#dbeafe;--mo:#f97316;--ml:#ffedd5;--af:#6366f1;--al:#e0e7ff;--bg:#f0faf7;--b2:#fff;--tx:#1e3a34;--t2:#4a7a6e;--t3:#8aaba4;--br:#c8e6df;--sh:0 4px 20px rgba(26,107,90,.10);--r:14px;--rs:8px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh}
+.hdr{background:linear-gradient(135deg,var(--pd),var(--p) 60%,var(--pl));color:#fff;position:sticky;top:0;z-index:100;box-shadow:0 4px 24px rgba(26,107,90,.25)}
+.hi{max-width:1400px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hico{width:48px;height:48px;background:rgba(255,255,255,.18);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.htit h1{font-family:'Nunito',sans-serif;font-size:1.08rem;font-weight:900;line-height:1.2}
+.htit p{font-size:.73rem;opacity:.75;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.hnav{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.nb{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.25);color:#fff;padding:7px 14px;border-radius:8px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;font-size:.82rem;transition:all .2s;display:flex;align-items:center;gap:6px}
+.nb:hover{background:rgba(255,255,255,.28)}.nb.active{background:#fff;color:var(--p);border-color:#fff}
+.main{max-width:1400px;margin:0 auto;padding:24px 20px}
+.sec{display:none}.sec.active{display:block}
+.card{background:var(--b2);border-radius:var(--r);box-shadow:var(--sh);border:1px solid var(--br);overflow:hidden}
+.ch{padding:15px 20px 12px;border-bottom:1px solid var(--br);display:flex;align-items:center;gap:10px}
+.ch h2{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;color:var(--p)}
+.cb{padding:18px 20px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.sc2{background:var(--b2);border-radius:var(--r);padding:17px 19px;border:1px solid var(--br);box-shadow:var(--sh);display:flex;align-items:center;gap:13px;transition:transform .2s}
+.sc2:hover{transform:translateY(-2px)}
+.sico{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.sinf p{font-size:.72rem;color:var(--t2);font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.sinf h3{font-family:'Nunito',sans-serif;font-size:1.9rem;font-weight:900;color:var(--tx);line-height:1}
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:.72rem;font-weight:700}
+.bm{background:var(--ml);color:var(--mo)}.ba{background:var(--al);color:var(--af)}.bi2{background:#fdf2f8;color:#9d174d}
+.bs{background:var(--sl);color:#065f46}.bd{background:var(--dl);color:#991b1b}.bw{background:var(--wl);color:#92400e}.bin{background:var(--il);color:#1e40af}
+.cwrap{background:var(--b2);border-radius:var(--r);box-shadow:var(--sh);border:1px solid var(--br)}
+.chd{padding:15px 19px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--br)}
+.chd h3{font-family:'Nunito',sans-serif;font-size:1.05rem;font-weight:800;color:var(--p)}
+.cnav{display:flex;gap:8px}
+.cnav button{background:var(--bg);border:1px solid var(--br);color:var(--p);width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:1rem;font-weight:700;transition:all .2s}
+.cnav button:hover{background:var(--p);color:#fff}
+.cgrid{display:grid;grid-template-columns:repeat(7,1fr);padding:10px;gap:3px}
+.cdn{text-align:center;font-size:.69rem;font-weight:800;color:var(--t3);text-transform:uppercase;padding:6px 0}
+.cd{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:6px 4px 4px;border-radius:10px;cursor:pointer;transition:all .15s;min-height:48px;border:1.5px solid transparent}
+.cd:hover{background:var(--bg);border-color:var(--pl)}.cd.today{background:var(--p)}.cd.today .dn{color:#fff;font-weight:900}
+.cd.om{opacity:.22;pointer-events:none}.cd.hev{border-color:var(--pl);background:#f0faf7}.cd.sel{border-color:var(--ac)!important;background:var(--wl)!important}
+.dn{font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:700;color:var(--tx)}
+.ddots{display:flex;gap:2px;flex-wrap:wrap;justify-content:center;margin-top:3px}
+.dot{width:6px;height:6px;border-radius:50%}.dot.m{background:var(--mo)}.dot.a{background:var(--af)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px}
+.fr.full{grid-template-columns:1fr}.fr.t3{grid-template-columns:1fr 1fr 1fr}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:.74rem;font-weight:800;color:var(--t2);text-transform:uppercase;letter-spacing:.4px}
+.fg input,.fg select,.fg textarea{padding:10px 12px;border:1.5px solid var(--br);border-radius:var(--rs);font-family:'Nunito Sans',sans-serif;font-size:.9rem;color:var(--tx);background:var(--bg);transition:border-color .2s;outline:none}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--p);background:#fff}
+.btn{padding:10px 20px;border-radius:var(--rs);border:none;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;font-size:.88rem;transition:all .2s;display:inline-flex;align-items:center;gap:7px}
+.bp{background:var(--p);color:#fff}.bp:hover{background:var(--pd);transform:translateY(-1px)}
+.bgh{background:var(--bg);color:var(--tx);border:1.5px solid var(--br)}.bgh:hover{border-color:var(--p);color:var(--p)}
+.bdn2{background:var(--dn);color:#fff}.bsm{padding:6px 12px;font-size:.78rem}.bic{width:32px;height:32px;padding:0;justify-content:center}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+thead tr{background:var(--bg)}
+th{padding:11px 13px;text-align:left;font-size:.71rem;font-weight:800;color:var(--t2);text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--br);white-space:nowrap}
+td{padding:11px 13px;border-bottom:1px solid var(--br);font-size:.86rem;vertical-align:middle}
+tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
+.rr{display:flex;align-items:center;padding:11px 15px;border-bottom:1px solid var(--br);gap:12px;transition:background .15s}
+.rr:last-child{border-bottom:none}.rr:hover{background:var(--bg)}
+.rn{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:900;font-size:.8rem;flex-shrink:0}
+.r1{background:#fef3c7;color:#92400e}.r2{background:#f1f5f9;color:#475569}.r3{background:#fef2f2;color:#9f1239}.ro{background:var(--bg);color:var(--t2)}
+.rbar{height:5px;background:var(--br);border-radius:10px;overflow:hidden;margin-top:4px}
+.rbf{height:100%;background:linear-gradient(90deg,var(--p),var(--pl));border-radius:10px}
+.nbdg{background:var(--ac);color:#fff;padding:2px 8px;border-radius:20px;font-size:.67rem;font-weight:800}
+.mo2{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s}
+.mo2.open{opacity:1;pointer-events:all}
+.mdl{background:#fff;border-radius:var(--r);max-width:600px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2);transform:scale(.95);transition:transform .2s}
+.mo2.open .mdl{transform:scale(1)}
+.mh2{padding:17px 21px 13px;border-bottom:1px solid var(--br);display:flex;align-items:center;justify-content:space-between}
+.mh2 h3{font-family:'Nunito',sans-serif;font-size:1.04rem;font-weight:800;color:var(--p)}
+.mcl{width:32px;height:32px;background:var(--bg);border:1px solid var(--br);border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:all .2s}
+.mcl:hover{background:var(--dn);color:#fff;border-color:var(--dn)}
+.mb2{padding:19px 21px}.mf2{padding:13px 21px;border-top:1px solid var(--br);display:flex;gap:10px;justify-content:flex-end}
+.al{padding:11px 14px;border-radius:var(--rs);font-size:.83rem;font-weight:600;display:flex;align-items:flex-start;gap:9px;margin-bottom:13px}
+.ai{background:var(--il);color:#1e40af;border-left:3px solid var(--in)}
+.as2{background:var(--sl);color:#065f46;border-left:3px solid var(--sc)}
+.tc{position:fixed;top:80px;right:20px;z-index:2000;display:flex;flex-direction:column;gap:8px}
+.toast{background:#fff;border-radius:var(--rs);padding:12px 15px;box-shadow:0 8px 30px rgba(0,0,0,.15);display:flex;align-items:center;gap:9px;font-size:.84rem;font-weight:600;border-left:4px solid var(--sc);min-width:250px;animation:sI .3s ease}
+@keyframes sI{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+.terror{border-left-color:var(--dn)}.twarning{border-left-color:var(--wn)}
+.tabs{display:flex;gap:4px;border-bottom:2px solid var(--br);margin-bottom:15px}
+.tb{padding:8px 14px;background:none;border:none;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;font-size:.83rem;color:var(--t2);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
+.tb:hover{color:var(--p)}.tb.active{color:var(--p);border-bottom-color:var(--p)}
+.ma{background:#f0fdf4;color:#166534}.mc3{background:#eff6ff;color:#1d4ed8}.mm{background:#fdf2f8;color:#9d174d}.mg{background:#fffbeb;color:#92400e}.mn{background:#f5f3ff;color:#5b21b6}.mo3{background:#f9fafb;color:#374151}
+.stit{font-family:'Nunito',sans-serif;font-size:1.28rem;font-weight:900;color:var(--p);margin-bottom:5px}
+.ssub{font-size:.84rem;color:var(--t2);margin-bottom:19px}
+.dvd{border:none;border-top:1px solid var(--br);margin:15px 0}
+.chip{display:inline-flex;align-items:center;padding:3px 9px;border-radius:6px;font-size:.74rem;font-weight:700;background:var(--bg);color:var(--t2);border:1px solid var(--br)}
+.pc{background:var(--b2);border:1px solid var(--br);border-radius:var(--r);padding:12px 14px;display:flex;align-items:center;gap:11px;transition:all .2s}
+.pc:hover{border-color:var(--p);box-shadow:0 4px 14px rgba(26,107,90,.10)}
+.pav{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--p),var(--pl));color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;flex-shrink:0}
+.pinf{flex:1;min-width:0}
+.pnm{font-weight:700;font-size:.87rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pmt{font-size:.73rem;color:var(--t2)}
+.ppts{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.04rem;color:var(--p)}
+.sb2{position:relative;margin-bottom:13px}
+.sb2 input{width:100%;padding:10px 13px 10px 35px;border:1.5px solid var(--br);border-radius:var(--rs);font-family:'Nunito Sans',sans-serif;font-size:.9rem;background:var(--bg);outline:none;transition:border-color .2s}
+.sb2 input:focus{border-color:var(--p);background:#fff}
+.sb2::before{content:'🔍';position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:.8rem}
+.ni{background:linear-gradient(135deg,var(--ac),#f97316);color:#fff;border-radius:var(--r);padding:13px 17px;display:flex;align-items:center;gap:13px;margin-bottom:17px;box-shadow:0 4px 14px rgba(245,158,11,.27)}
+.ni-ic{font-size:1.8rem}
+.ni h4{font-family:'Nunito',sans-serif;font-weight:800;font-size:.76rem;opacity:.85;text-transform:uppercase;letter-spacing:.4px}
+.ni-nm{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.08rem}
+.ni-mt{font-size:.77rem;opacity:.85}
+.es{text-align:center;padding:34px 18px;color:var(--t3)}.es .ei{font-size:2.1rem;margin-bottom:7px}.es p{font-size:.87rem}
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.g2,.g3,.g4{grid-template-columns:1fr}.fr,.fr.t3{grid-template-columns:1fr}.hnav{gap:4px}.nb span{display:none}.main{padding:13px 10px}}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--br);border-radius:10px}
 </style>
 </head>
 <body>
-
-<!-- HEADER -->
-<header class="header">
-  <div class="header-inner">
-    <div class="header-icon">🏫</div>
-    <div class="header-title">
-      <h1>NEIM Elizabeth Regina Aparecida Garcia</h1>
-      <p>Sistema de Controle de Substituições</p>
-    </div>
-    <nav class="header-nav">
-      <button class="nav-btn active" onclick="showSection('dashboard')" id="nav-dashboard">📊 <span>Dashboard</span></button>
-      <button class="nav-btn" onclick="showSection('calendario')" id="nav-calendario">📅 <span>Calendário</span></button>
-      <button class="nav-btn" onclick="showSection('ranking')" id="nav-ranking">🏆 <span>Fila / Ranking</span></button>
-      <button class="nav-btn" onclick="showSection('professoras')" id="nav-professoras">👩‍🏫 <span>Professoras</span></button>
-      <button class="nav-btn" onclick="showSection('historico')" id="nav-historico">📋 <span>Histórico</span></button>
+<header class="hdr">
+  <div class="hi">
+    <div class="hico">🏫</div>
+    <div class="htit"><h1>NEIM Elizabeth Regina Aparecida Garcia</h1><p>Controle de Substituições de Professoras</p></div>
+    <nav class="hnav">
+      <button class="nb active" id="nav-dashboard" onclick="showSec('dashboard')">📊 <span>Painel</span></button>
+      <button class="nb" id="nav-calendario" onclick="showSec('calendario')">📅 <span>Calendário</span></button>
+      <button class="nb" id="nav-ranking" onclick="showSec('ranking')">🏆 <span>Fila/Ranking</span></button>
+      <button class="nb" id="nav-professoras" onclick="showSec('professoras')">👩‍🏫 <span>Professoras</span></button>
+      <button class="nb" id="nav-historico" onclick="showSec('historico')">📋 <span>Histórico</span></button>
     </nav>
   </div>
 </header>
-
-<!-- TOAST CONTAINER -->
-<div class="toast-container" id="toastContainer"></div>
-
-<!-- MAIN -->
+<div class="tc" id="tc"></div>
 <main class="main">
 
-  <!-- ===== DASHBOARD ===== -->
-  <section class="section active" id="section-dashboard">
-    <div class="section-title">Visão Geral</div>
-    <div class="section-sub">Resumo do mês atual e indicadores do sistema</div>
-
-    <div class="grid-4" style="margin-bottom:20px">
-      <div class="stat-card">
-        <div class="stat-icon" style="background:#d1fae5">📋</div>
-        <div class="stat-info"><p>Substituições no mês</p><h3 id="stat-mes">0</h3></div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon" style="background:#ffedd5">🌅</div>
-        <div class="stat-info"><p>Manhã</p><h3 id="stat-manha">0</h3></div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon" style="background:#e0e7ff">🌇</div>
-        <div class="stat-info"><p>Tarde</p><h3 id="stat-tarde">0</h3></div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon" style="background:#fee2e2">⚠️</div>
-        <div class="stat-info"><p>Recusas</p><h3 id="stat-recusas">0</h3></div>
-      </div>
+<!-- PAINEL -->
+<section class="sec active" id="sec-dashboard">
+  <div class="stit">Painel Geral</div><div class="ssub">Resumo do mês atual e situação das substituições</div>
+  <div class="g4" style="margin-bottom:20px">
+    <div class="sc2"><div class="sico" style="background:#d1fae5">📋</div><div class="sinf"><p>Registros no mês</p><h3 id="s-mes">0</h3></div></div>
+    <div class="sc2"><div class="sico" style="background:#ffedd5">🌅</div><div class="sinf"><p>Manhã</p><h3 id="s-manha">0</h3></div></div>
+    <div class="sc2"><div class="sico" style="background:#e0e7ff">🌇</div><div class="sinf"><p>Tarde</p><h3 id="s-tarde">0</h3></div></div>
+    <div class="sc2"><div class="sico" style="background:#fee2e2">🚫</div><div class="sinf"><p>Recusas</p><h3 id="s-rec">0</h3></div></div>
+  </div>
+  <div class="g2" style="margin-bottom:20px">
+    <div>
+      <div class="ni"><div class="ni-ic">⭐</div><div><h4>Próxima na fila para substituir</h4><div class="ni-nm" id="nxN">Nenhuma professora cadastrada</div><div class="ni-mt" id="nxM"></div></div></div>
+      <div class="card"><div class="ch"><span>🕐</span><h2>Registros Recentes</h2></div><div id="recList"><div class="es"><div class="ei">📋</div><p>Nenhum registro ainda</p></div></div></div>
     </div>
+    <div class="card"><div class="ch"><span>📊</span><h2>Motivos de Ausência — Mês Atual</h2></div><div class="cb" id="motChart"><div class="es"><div class="ei">📊</div><p>Nenhum dado ainda</p></div></div></div>
+  </div>
+  <div class="card"><div class="ch"><span>🏛️</span><h2>Turmas da Creche</h2></div><div class="cb"><div class="g3" id="turGrid"></div></div></div>
+</section>
 
-    <div class="grid-2" style="margin-bottom:20px">
-      <!-- PROXIMA DA FILA -->
-      <div>
-        <div id="nextInQueue" class="next-indicator">
-          <div class="icon">⭐</div>
-          <div>
-            <h4>Próxima na fila para substituir</h4>
-            <div class="name" id="nextName">Nenhuma professora cadastrada</div>
-            <div class="meta" id="nextMeta"></div>
-          </div>
-        </div>
-
-        <!-- SUBSTITUIÇÕES RECENTES -->
-        <div class="card">
-          <div class="card-header">
-            <span class="icon">🕐</span>
-            <h2>Substituições Recentes</h2>
-          </div>
-          <div id="recentList">
-            <div class="empty-state"><div class="icon">📋</div><p>Nenhuma substituição registrada</p></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- MOTIVOS DO MÊS -->
-      <div class="card">
-        <div class="card-header">
-          <span class="icon">📊</span>
-          <h2>Motivos de Ausência — Mês Atual</h2>
-        </div>
-        <div class="card-body" id="motivosChart">
-          <div class="empty-state"><div class="icon">📊</div><p>Nenhum dado ainda</p></div>
-        </div>
-      </div>
+<!-- CALENDÁRIO -->
+<section class="sec" id="sec-calendario">
+  <div class="stit">Calendário de Registros</div><div class="ssub">Clique em um dia para ver ou registrar uma substituição</div>
+  <div class="g2">
+    <div class="cwrap">
+      <div class="chd"><h3 id="calT"></h3><div class="cnav"><button onclick="chMon(-1)">‹</button><button onclick="goToday()">Hoje</button><button onclick="chMon(1)">›</button></div></div>
+      <div class="cgrid" id="calG"></div>
     </div>
-
-    <!-- TURMAS STATUS -->
     <div class="card">
-      <div class="card-header">
-        <span class="icon">🏛️</span>
-        <h2>Turmas da Creche</h2>
+      <div class="ch"><span>📅</span><h2 id="dayT">Selecione um dia</h2><button class="btn bp bsm" style="margin-left:auto;display:none" id="addBtn" onclick="openSubModal()">+ Novo Registro</button></div>
+      <div id="dayList"><div class="es"><div class="ei">👆</div><p>Clique em um dia no calendário</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RANKING -->
+<section class="sec" id="sec-ranking">
+  <div class="stit">Fila de Equidade — Ranking</div><div class="ssub">Menor pontuação = prioridade. Quem recusa é movida para o final automaticamente.</div>
+  <div class="g2" style="margin-bottom:20px">
+    <div class="card"><div class="ch"><span>🌅</span><h2>Fila — Manhã</h2><span style="margin-left:auto;font-size:.73rem;color:var(--t2)">↓ prioridade</span></div><div id="rkM"><div class="es"><div class="ei">👩‍🏫</div><p>Cadastre professoras</p></div></div></div>
+    <div class="card"><div class="ch"><span>🌇</span><h2>Fila — Tarde</h2><span style="margin-left:auto;font-size:.73rem;color:var(--t2)">↓ prioridade</span></div><div id="rkT"><div class="es"><div class="ei">👩‍🏫</div><p>Cadastre professoras</p></div></div></div>
+  </div>
+  <div class="card"><div class="ch"><span>✏️</span><h2>Ajuste Manual de Pontuação</h2></div>
+    <div class="cb">
+      <div class="al ai">ℹ️ Ajuste manual de pontos. O sistema atualiza automaticamente ao confirmar ou registrar recusa.</div>
+      <div class="fr t3">
+        <div class="fg"><label>Professora</label><select id="ajPr"><option value="">Selecione...</option></select></div>
+        <div class="fg"><label>Operação</label><select id="ajOp"><option value="set">Definir valor</option><option value="add">Adicionar</option><option value="sub">Subtrair</option></select></div>
+        <div class="fg"><label>Pontos</label><input type="number" id="ajPts" min="0" value="1"></div>
       </div>
-      <div class="card-body">
-        <div class="grid-3" id="turmasGrid">
+      <button class="btn bp" onclick="ajustarPts()">💾 Salvar Ajuste</button>
+    </div>
+  </div>
+</section>
+
+<!-- PROFESSORAS -->
+<section class="sec" id="sec-professoras">
+  <div class="stit">Gestão de Professoras</div><div class="ssub">Cadastre e gerencie as professoras da creche</div>
+  <div class="g2">
+    <div class="card"><div class="ch"><span>➕</span><h2 id="fPT">Nova Professora</h2></div>
+      <div class="cb">
+        <input type="hidden" id="ePId">
+        <div class="fr">
+          <div class="fg"><label>Nome completo *</label><input type="text" id="pNome" placeholder="Ex: Maria das Graças Silva"></div>
+          <div class="fg"><label>Turma *</label><select id="pTurma"><option value="">Selecione...</option><option>Berçário II A</option><option>Berçário II B</option><option>Maternal I A</option><option>Maternal I B</option><option>Maternal I C</option><option>Maternal I D</option><option>Maternal II A</option><option>Maternal II B</option><option>Maternal II C</option><option>Maternal II D</option></select></div>
+        </div>
+        <div class="fr">
+          <div class="fg"><label>Período *</label><select id="pPer"><option value="">Selecione...</option><option value="Manhã">🌅 Manhã</option><option value="Tarde">🌇 Tarde</option></select></div>
+          <div class="fg"><label>Pontuação inicial</label><input type="number" id="pPts" min="0" value="0"></div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:4px">
+          <button class="btn bp" onclick="salvarProf()">💾 Salvar</button>
+          <button class="btn bgh" onclick="cancelProf()">✕ Cancelar</button>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- ===== CALENDÁRIO ===== -->
-  <section class="section" id="section-calendario">
-    <div class="section-title">Calendário de Substituições</div>
-    <div class="section-sub">Clique em um dia para registrar ou visualizar substituições</div>
-
-    <div class="grid-2">
-      <div class="calendar-wrap">
-        <div class="cal-header">
-          <h3 id="calTitle"></h3>
-          <div class="cal-nav">
-            <button onclick="changeMonth(-1)">‹</button>
-            <button onclick="goToday()">Hoje</button>
-            <button onclick="changeMonth(1)">›</button>
-          </div>
+    <div class="card"><div class="ch"><span>👩‍🏫</span><h2>Professoras Cadastradas</h2><span class="badge bin" style="margin-left:auto" id="pCnt">0</span></div>
+      <div class="cb" style="padding-top:12px">
+        <div class="tabs">
+          <button class="tb active" onclick="setPTab('todas',this)">Todas</button>
+          <button class="tb" onclick="setPTab('manha',this)">🌅 Manhã</button>
+          <button class="tb" onclick="setPTab('tarde',this)">🌇 Tarde</button>
         </div>
-        <div class="cal-grid" id="calGrid"></div>
-      </div>
-
-      <div>
-        <div class="card" id="dayPanel">
-          <div class="card-header">
-            <span class="icon">📅</span>
-            <h2 id="dayPanelTitle">Selecione um dia</h2>
-            <button class="btn btn-primary btn-sm" style="margin-left:auto" onclick="openNewSubModal()" id="addDayBtn" style="display:none">+ Nova</button>
-          </div>
-          <div id="daySubsList">
-            <div class="empty-state"><div class="icon">👆</div><p>Clique em um dia no calendário</p></div>
-          </div>
-        </div>
+        <div class="sb2"><input type="text" id="pSrch" placeholder="Buscar professora..." oninput="renderProfs()"></div>
+        <div id="pList" style="max-height:350px;overflow-y:auto;display:flex;flex-direction:column;gap:7px"></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== RANKING ===== -->
-  <section class="section" id="section-ranking">
-    <div class="section-title">Fila de Equidade — Ranking</div>
-    <div class="section-sub">Professoras com menos pontos têm prioridade. Quem recusa vai para o final da fila.</div>
-
-    <div class="grid-2" style="margin-bottom:20px">
-      <div class="card">
-        <div class="card-header">
-          <span class="icon">🌅</span>
-          <h2>Fila — Manhã</h2>
-          <span style="margin-left:auto;font-size:0.75rem;color:var(--text2)">menor pontos = prioridade</span>
-        </div>
-        <div id="rankManha">
-          <div class="empty-state"><div class="icon">👩‍🏫</div><p>Cadastre professoras para ver a fila</p></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <span class="icon">🌇</span>
-          <h2>Fila — Tarde</h2>
-          <span style="margin-left:auto;font-size:0.75rem;color:var(--text2)">menor pontos = prioridade</span>
-        </div>
-        <div id="rankTarde">
-          <div class="empty-state"><div class="icon">👩‍🏫</div><p>Cadastre professoras para ver a fila</p></div>
-        </div>
-      </div>
+<!-- HISTÓRICO -->
+<section class="sec" id="sec-historico">
+  <div class="stit">Histórico de Registros</div><div class="ssub">Consulte, filtre e exporte todos os registros de substituição</div>
+  <div class="card" style="margin-bottom:17px"><div class="cb">
+    <div class="fr t3" style="margin-bottom:0">
+      <div class="fg"><label>Professora</label><select id="fProf" onchange="renderHist()"><option value="">Todas</option></select></div>
+      <div class="fg"><label>Período</label><select id="fPer" onchange="renderHist()"><option value="">Todos</option><option value="Manhã">Manhã</option><option value="Tarde">Tarde</option></select></div>
+      <div class="fg"><label>Motivo</label><select id="fMot" onchange="renderHist()"><option value="">Todos</option><option>Abonada</option><option>Licença Médica (CLM)</option><option>Licença Maternidade</option><option>Licença Gala</option><option>Licença Nojo</option><option>Outro</option></select></div>
     </div>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="icon">✏️</span>
-        <h2>Ajuste Manual de Pontuação</h2>
-      </div>
-      <div class="card-body">
-        <div class="alert alert-info">ℹ️ Use este painel para ajustar manualmente a pontuação de qualquer professora. O sistema também atualiza automaticamente ao registrar substituições e recusas.</div>
-        <div class="form-row three">
-          <div class="form-group">
-            <label>Professora</label>
-            <select id="ajusteProfSelect">
-              <option value="">Selecione...</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Operação</label>
-            <select id="ajusteOp">
-              <option value="set">Definir valor</option>
-              <option value="add">Adicionar pontos</option>
-              <option value="sub">Subtrair pontos</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Pontos</label>
-            <input type="number" id="ajustePts" min="0" value="1" placeholder="Ex: 5">
-          </div>
-        </div>
-        <button class="btn btn-primary" onclick="ajustarPontuacao()">💾 Salvar Ajuste</button>
-      </div>
+  </div></div>
+  <div class="card"><div class="ch"><span>📋</span><h2>Registros</h2><span class="badge bin" style="margin-left:8px" id="hCnt">0</span>
+    <div style="margin-left:auto;display:flex;gap:8px">
+      <button class="btn bgh bsm" onclick="expCSV()">📥 Exportar CSV</button>
+      <button class="btn bgh bsm" onclick="window.print()">🖨️ Imprimir</button>
     </div>
-  </section>
-
-  <!-- ===== PROFESSORAS ===== -->
-  <section class="section" id="section-professoras">
-    <div class="section-title">Gestão de Professoras</div>
-    <div class="section-sub">Cadastre e gerencie as professoras da creche</div>
-
-    <div class="grid-2">
-      <!-- CADASTRO -->
-      <div class="card">
-        <div class="card-header">
-          <span class="icon">➕</span>
-          <h2 id="formProfTitle">Nova Professora</h2>
-        </div>
-        <div class="card-body">
-          <input type="hidden" id="editProfId">
-          <div class="form-row">
-            <div class="form-group">
-              <label>Nome completo *</label>
-              <input type="text" id="profNome" placeholder="Ex: Maria das Graças Silva">
-            </div>
-            <div class="form-group">
-              <label>Turma *</label>
-              <select id="profTurma">
-                <option value="">Selecione...</option>
-                <option value="Berçário II A">Berçário II A</option>
-                <option value="Berçário II B">Berçário II B</option>
-                <option value="Maternal I A">Maternal I A</option>
-                <option value="Maternal I B">Maternal I B</option>
-                <option value="Maternal I C">Maternal I C</option>
-                <option value="Maternal I D">Maternal I D</option>
-                <option value="Maternal II A">Maternal II A</option>
-                <option value="Maternal II B">Maternal II B</option>
-                <option value="Maternal II C">Maternal II C</option>
-                <option value="Maternal II D">Maternal II D</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Período *</label>
-              <select id="profPeriodo">
-                <option value="">Selecione...</option>
-                <option value="Manhã">Manhã</option>
-                <option value="Tarde">Tarde</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Pontuação inicial</label>
-              <input type="number" id="profPontos" min="0" value="0" placeholder="0">
-            </div>
-          </div>
-          <div class="form-row" style="margin-top:4px">
-            <button class="btn btn-primary" onclick="salvarProfessora()">💾 Salvar Professora</button>
-            <button class="btn btn-ghost" onclick="cancelarEditProfessora()">✕ Cancelar</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- LISTA -->
-      <div class="card">
-        <div class="card-header">
-          <span class="icon">👩‍🏫</span>
-          <h2>Professoras Cadastradas</h2>
-          <span class="badge badge-info" style="margin-left:auto" id="profCount">0</span>
-        </div>
-        <div class="card-body" style="padding-top:14px">
-          <div class="tabs">
-            <button class="tab-btn active" onclick="switchProfTab('todas', this)">Todas</button>
-            <button class="tab-btn" onclick="switchProfTab('manha', this)">🌅 Manhã</button>
-            <button class="tab-btn" onclick="switchProfTab('tarde', this)">🌇 Tarde</button>
-          </div>
-          <div class="search-box">
-            <input type="text" placeholder="Buscar professora..." oninput="renderProfLista()" id="profSearch">
-          </div>
-          <div id="profLista" style="max-height:380px;overflow-y:auto;display:flex;flex-direction:column;gap:8px"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== HISTÓRICO ===== -->
-  <section class="section" id="section-historico">
-    <div class="section-title">Histórico de Substituições</div>
-    <div class="section-sub">Consulte, filtre e exporte todas as substituições registradas</div>
-
-    <div class="card" style="margin-bottom:20px">
-      <div class="card-body">
-        <div class="form-row three" style="margin-bottom:0">
-          <div class="form-group">
-            <label>Filtrar por Professora</label>
-            <select id="filtroProf" onchange="renderHistorico()">
-              <option value="">Todas</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Período</label>
-            <select id="filtroPeriodo" onchange="renderHistorico()">
-              <option value="">Todos</option>
-              <option value="Manhã">Manhã</option>
-              <option value="Tarde">Tarde</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Motivo</label>
-            <select id="filtroMotivo" onchange="renderHistorico()">
-              <option value="">Todos</option>
-              <option value="Abonada">Abonada</option>
-              <option value="Licença Médica (CLM)">Licença Médica (CLM)</option>
-              <option value="Licença Maternidade">Licença Maternidade</option>
-              <option value="Licença Gala">Licença Gala</option>
-              <option value="Licença Nojo">Licença Nojo</option>
-              <option value="Outro">Outro</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="icon">📋</span>
-        <h2>Registros</h2>
-        <span class="badge badge-info" style="margin-left:8px" id="histCount">0</span>
-        <div style="margin-left:auto;display:flex;gap:8px">
-          <button class="btn btn-ghost btn-sm" onclick="exportCSV()">📥 Exportar CSV</button>
-          <button class="btn btn-ghost btn-sm" onclick="exportPrint()">🖨️ Imprimir</button>
-        </div>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Data</th>
-              <th>Ausente</th>
-              <th>Turma</th>
-              <th>Período</th>
-              <th>Motivo</th>
-              <th>Dias</th>
-              <th>Substituta</th>
-              <th>Status</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="histTable">
-            <tr><td colspan="9"><div class="empty-state"><div class="icon">📋</div><p>Nenhum registro</p></div></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>Data</th><th>Professora Ausente</th><th>Turma</th><th>Período</th><th>Motivo</th><th>Dias</th><th>Substituta</th><th>Status</th><th></th></tr></thead>
+    <tbody id="hTable"><tr><td colspan="9"><div class="es"><div class="ei">📋</div><p>Nenhum registro</p></div></td></tr></tbody>
+  </table></div></div>
+</section>
 </main>
 
-<!-- ===== MODAL: NOVA SUBSTITUIÇÃO ===== -->
-<div class="modal-overlay" id="modalSub">
-  <div class="modal">
-    <div class="modal-header">
-      <h3 id="modalSubTitle">📝 Registrar Substituição</h3>
-      <button class="modal-close" onclick="closeModal('modalSub')">✕</button>
+<!-- MODAL REGISTRO -->
+<div class="mo2" id="mSub">
+  <div class="mdl">
+    <div class="mh2"><h3 id="mSubT">📝 Novo Registro de Substituição</h3><button class="mcl" onclick="closeMo('mSub')">✕</button></div>
+    <div class="mb2">
+      <div class="al ai" id="mAlert" style="display:none"></div>
+      <div class="fr">
+        <div class="fg"><label>Professora Ausente *</label><select id="sAus" onchange="onAus()"><option value="">Selecione...</option></select></div>
+        <div class="fg"><label>Turma</label><input type="text" id="sTurma" readonly style="background:#f9fafb"></div>
+      </div>
+      <div class="fr">
+        <div class="fg"><label>Período da Ausente</label><input type="text" id="sPer" readonly style="background:#f9fafb"></div>
+        <div class="fg"><label>Motivo *</label><select id="sMot"><option value="">Selecione...</option><option>Abonada</option><option>Licença Médica (CLM)</option><option>Licença Maternidade</option><option>Licença Gala</option><option>Licença Nojo</option><option>Outro</option></select></div>
+      </div>
+      <div class="fr">
+        <div class="fg"><label>Data Inicial *</label><input type="date" id="sData"></div>
+        <div class="fg"><label>Número de dias *</label><input type="number" id="sDias" min="1" value="1"></div>
+      </div>
+      <hr class="dvd">
+      <div id="sInd" style="display:none"><div class="al as2" id="sIndA"></div></div>
+      <div class="fr">
+        <div class="fg"><label>Professora Substituta *</label><select id="sSub"><option value="">Selecione...</option></select></div>
+        <div class="fg"><label>Status *</label><select id="sSt"><option value="Confirmada">✅ Confirmada</option><option value="Recusou">🚫 Recusou</option><option value="Pendente">⏳ Pendente</option></select></div>
+      </div>
+      <div class="fr full"><div class="fg"><label>Observações</label><textarea id="sObs" rows="2" placeholder="Observações adicionais..."></textarea></div></div>
     </div>
-    <div class="modal-body">
-      <div class="alert alert-info" id="modalSubAlert" style="display:none"></div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>Professora Ausente *</label>
-          <select id="subAusente" onchange="onAusenteChange()">
-            <option value="">Selecione...</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Turma da Ausente</label>
-          <input type="text" id="subTurma" readonly style="background:#f9fafb">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Período da Ausente</label>
-          <input type="text" id="subPeriodoAusente" readonly style="background:#f9fafb">
-        </div>
-        <div class="form-group">
-          <label>Motivo *</label>
-          <select id="subMotivo">
-            <option value="">Selecione...</option>
-            <option value="Abonada">Abonada</option>
-            <option value="Licença Médica (CLM)">Licença Médica (CLM)</option>
-            <option value="Licença Maternidade">Licença Maternidade</option>
-            <option value="Licença Gala">Licença Gala</option>
-            <option value="Licença Nojo">Licença Nojo</option>
-            <option value="Outro">Outro</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Data Inicial *</label>
-          <input type="date" id="subDataIni">
-        </div>
-        <div class="form-group">
-          <label>Número de dias *</label>
-          <input type="number" id="subDias" min="1" value="1" placeholder="Ex: 3">
-        </div>
-      </div>
-      <hr class="divider">
-      <div id="subSugestao" style="display:none">
-        <div class="alert alert-success" id="subSugestaoAlert"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Professora Substituta *</label>
-          <select id="subSubstituta">
-            <option value="">Selecione...</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Status</label>
-          <select id="subStatus">
-            <option value="Confirmada">Confirmada ✅</option>
-            <option value="Recusada">Recusada ❌</option>
-            <option value="Pendente">Pendente ⏳</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row full">
-        <div class="form-group">
-          <label>Observações</label>
-          <textarea id="subObs" rows="2" placeholder="Observações adicionais..."></textarea>
-        </div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-ghost" onclick="closeModal('modalSub')">Cancelar</button>
-      <button class="btn btn-primary" onclick="salvarSubstituicao()">💾 Salvar Substituição</button>
-    </div>
+    <div class="mf2"><button class="btn bgh" onclick="closeMo('mSub')">Cancelar</button><button class="btn bp" onclick="salvarReg()">💾 Salvar Registro</button></div>
   </div>
 </div>
 
-<!-- ===== MODAL: VER SUBSTITUIÇÃO ===== -->
-<div class="modal-overlay" id="modalView">
-  <div class="modal">
-    <div class="modal-header">
-      <h3>📋 Detalhe da Substituição</h3>
-      <button class="modal-close" onclick="closeModal('modalView')">✕</button>
-    </div>
-    <div class="modal-body" id="modalViewBody"></div>
-    <div class="modal-footer">
-      <button class="btn btn-ghost" onclick="closeModal('modalView')">Fechar</button>
-      <button class="btn btn-danger btn-sm" id="modalViewDelete">🗑️ Excluir</button>
-    </div>
+<!-- MODAL VER -->
+<div class="mo2" id="mView">
+  <div class="mdl">
+    <div class="mh2"><h3>📋 Detalhes do Registro</h3><button class="mcl" onclick="closeMo('mView')">✕</button></div>
+    <div class="mb2" id="mVBody"></div>
+    <div class="mf2"><button class="btn bgh" onclick="closeMo('mView')">Fechar</button><button class="btn bdn2 bsm" id="mVDel">🗑️ Excluir</button></div>
   </div>
 </div>
 
 <script>
-// ========== DATA ==========
-let data = JSON.parse(localStorage.getItem('neim_data') || '{"professoras":[],"substituicoes":[]}');
+var D = JSON.parse(localStorage.getItem('neim4') || '{"p":[],"r":[]}');
+var cMon = new Date().getMonth(), cYr = new Date().getFullYear(), selDate = null, editId = null, pTab = 'todas';
+var TUR = {'Berçário II A':'i','Berçário II B':'i','Maternal I A':'i','Maternal I B':'i','Maternal I C':'i','Maternal I D':'i','Maternal II A':'m','Maternal II B':'m','Maternal II C':'t','Maternal II D':'t'};
+var MCSS = {'Abonada':'ma','Licença Médica (CLM)':'mc3','Licença Maternidade':'mm','Licença Gala':'mg','Licença Nojo':'mn','Outro':'mo3'};
 
-let currentMonth = new Date().getMonth();
-let currentYear = new Date().getFullYear();
-let selectedDate = null;
-let editingSubId = null;
-let profTabFilter = 'todas';
+function sv() { localStorage.setItem('neim4', JSON.stringify(D)); }
+function gId() { return Date.now().toString(36) + Math.random().toString(36).substr(2,5); }
+function fD(s) { if(!s) return '—'; var p = s.split('-'); return p[2]+'/'+p[1]+'/'+p[0]; }
+function opp(p) { return p === 'Manhã' ? 'Tarde' : 'Manhã'; }
 
-const TURMAS = {
-  'Berçário II A': { tipo: 'integral' },
-  'Berçário II B': { tipo: 'integral' },
-  'Maternal I A':  { tipo: 'integral' },
-  'Maternal I B':  { tipo: 'integral' },
-  'Maternal I C':  { tipo: 'integral' },
-  'Maternal I D':  { tipo: 'integral' },
-  'Maternal II A': { tipo: 'manha' },
-  'Maternal II B': { tipo: 'manha' },
-  'Maternal II C': { tipo: 'tarde' },
-  'Maternal II D': { tipo: 'tarde' },
-};
-
-const MOTIVO_COLORS = {
-  'Abonada': 'motivo-abonada',
-  'Licença Médica (CLM)': 'motivo-clm',
-  'Licença Maternidade': 'motivo-maternidade',
-  'Licença Gala': 'motivo-gala',
-  'Licença Nojo': 'motivo-nojo',
-  'Outro': 'motivo-outro',
-};
-
-function save() {
-  localStorage.setItem('neim_data', JSON.stringify(data));
+function showSec(id) {
+  document.querySelectorAll('.sec').forEach(function(s){ s.classList.remove('active'); });
+  document.querySelectorAll('.nb').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('sec-'+id).classList.add('active');
+  document.getElementById('nav-'+id).classList.add('active');
+  if(id==='dashboard') rDash();
+  else if(id==='calendario') rCal();
+  else if(id==='ranking') rRank();
+  else if(id==='professoras') renderProfs();
+  else if(id==='historico') { upFP(); renderHist(); }
 }
 
-function genId() {
-  return Date.now().toString(36) + Math.random().toString(36).substr(2,5);
+function toast(msg, t) {
+  var el = document.createElement('div');
+  el.className = 'toast' + (t ? ' t'+t : '');
+  el.innerHTML = (t==='error'?'❌':t==='warning'?'⚠️':'✅') + ' ' + msg;
+  document.getElementById('tc').appendChild(el);
+  setTimeout(function(){ el.remove(); }, 3500);
+}
+function openMo(id) { document.getElementById(id).classList.add('open'); }
+function closeMo(id) { document.getElementById(id).classList.remove('open'); }
+
+function getElig(aid) {
+  var a = D.p.find(function(x){ return x.id===aid; });
+  if(!a) return [];
+  var op = opp(a.periodo);
+  return D.p.filter(function(x){ return x.id!==aid && x.periodo===op; }).sort(function(a,b){ return a.pts-b.pts; });
 }
 
-// ========== NAVIGATION ==========
-function showSection(id) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('section-' + id).classList.add('active');
-  document.getElementById('nav-' + id).classList.add('active');
-  if (id === 'dashboard') renderDashboard();
-  if (id === 'calendario') renderCalendar();
-  if (id === 'ranking') renderRanking();
-  if (id === 'professoras') renderProfLista();
-  if (id === 'historico') renderHistorico();
-}
-
-// ========== TOAST ==========
-function toast(msg, type='success') {
-  const el = document.createElement('div');
-  el.className = `toast${type !== 'success' ? ' ' + type : ''}`;
-  el.innerHTML = (type === 'success' ? '✅' : type === 'error' ? '❌' : '⚠️') + ' ' + msg;
-  document.getElementById('toastContainer').appendChild(el);
-  setTimeout(() => el.remove(), 3500);
-}
-
-// ========== MODAL ==========
-function openModal(id) { document.getElementById(id).classList.add('open'); }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-
-// ========== PERIODO OPOSTO ==========
-function getPeriodoOposto(periodo) {
-  return periodo === 'Manhã' ? 'Tarde' : 'Manhã';
-}
-
-function getProfElegiveis(ausenteId) {
-  const ausente = data.professoras.find(p => p.id === ausenteId);
-  if (!ausente) return [];
-  const periodoOposto = getPeriodoOposto(ausente.periodo);
-  return data.professoras
-    .filter(p => p.id !== ausenteId && p.periodo === periodoOposto)
-    .sort((a, b) => a.pontos - b.pontos);
-}
-
-// ========== DASHBOARD ==========
-function renderDashboard() {
-  const now = new Date();
-  const mes = now.getMonth(); const ano = now.getFullYear();
-  const subsMes = data.substituicoes.filter(s => {
-    const d = new Date(s.dataIni + 'T12:00:00');
-    return d.getMonth() === mes && d.getFullYear() === ano;
-  });
-  document.getElementById('stat-mes').textContent = subsMes.length;
-  document.getElementById('stat-manha').textContent = subsMes.filter(s => s.periodoAusente === 'Manhã').length;
-  document.getElementById('stat-tarde').textContent = subsMes.filter(s => s.periodoAusente === 'Tarde').length;
-  document.getElementById('stat-recusas').textContent = data.substituicoes.filter(s => s.status === 'Recusada').length;
-
-  // Proxima fila
-  const proxManha = [...data.professoras].filter(p => p.periodo === 'Manhã').sort((a,b) => a.pontos - b.pontos)[0];
-  const proxTarde = [...data.professoras].filter(p => p.periodo === 'Tarde').sort((a,b) => a.pontos - b.pontos)[0];
-  const prox = proxManha || proxTarde;
-  if (prox) {
-    document.getElementById('nextName').textContent = prox.nome;
-    document.getElementById('nextMeta').textContent = prox.turma + ' — ' + prox.periodo + ' — ' + prox.pontos + ' ponto(s)';
-  } else {
-    document.getElementById('nextName').textContent = 'Nenhuma professora cadastrada';
-    document.getElementById('nextMeta').textContent = '';
-  }
-
-  // Recentes
-  const recentes = [...data.substituicoes].sort((a,b) => new Date(b.dataIni) - new Date(a.dataIni)).slice(0, 5);
-  const rl = document.getElementById('recentList');
-  if (recentes.length === 0) {
-    rl.innerHTML = '<div class="empty-state"><div class="icon">📋</div><p>Nenhuma substituição registrada</p></div>';
-  } else {
-    rl.innerHTML = recentes.map(s => {
-      const ausente = data.professoras.find(p => p.id === s.ausenteId);
-      const sub = data.professoras.find(p => p.id === s.substitutaId);
-      const statusBadge = s.status === 'Confirmada' ? 'badge-success' : s.status === 'Recusada' ? 'badge-danger' : 'badge-warning';
-      return `<div class="rank-row" onclick="viewSub('${s.id}')" style="cursor:pointer">
-        <div style="flex:1">
-          <div style="font-weight:700;font-size:0.88rem">${ausente ? ausente.nome : '—'}</div>
-          <div style="font-size:0.75rem;color:var(--text2)">${s.turmaAusente} • ${formatDate(s.dataIni)} • ${s.dias} dia(s)</div>
-        </div>
-        <div style="text-align:right">
-          <div style="font-size:0.78rem;color:var(--text2);margin-bottom:3px">${sub ? '→ ' + sub.nome.split(' ')[0] : '—'}</div>
-          <span class="badge ${statusBadge}">${s.status}</span>
-        </div>
-      </div>`;
+// DASHBOARD
+function rDash() {
+  var now = new Date(), mes = now.getMonth(), ano = now.getFullYear();
+  var rm = D.r.filter(function(r){ var d=new Date(r.di+'T12:00:00'); return d.getMonth()===mes && d.getFullYear()===ano; });
+  document.getElementById('s-mes').textContent = rm.length;
+  document.getElementById('s-manha').textContent = rm.filter(function(r){ return r.pa==='Manhã'; }).length;
+  document.getElementById('s-tarde').textContent = rm.filter(function(r){ return r.pa==='Tarde'; }).length;
+  document.getElementById('s-rec').textContent = D.r.filter(function(r){ return r.st==='Recusou'; }).length;
+  var pm = D.p.filter(function(x){ return x.periodo==='Manhã'; }).sort(function(a,b){ return a.pts-b.pts; })[0];
+  var pt = D.p.filter(function(x){ return x.periodo==='Tarde'; }).sort(function(a,b){ return a.pts-b.pts; })[0];
+  var px = pm || pt;
+  if(px){ document.getElementById('nxN').textContent = px.nome; document.getElementById('nxM').textContent = px.turma+' — '+px.periodo+' — '+px.pts+' pt(s)'; }
+  else { document.getElementById('nxN').textContent = 'Nenhuma professora cadastrada'; document.getElementById('nxM').textContent = ''; }
+  var rec = D.r.slice().sort(function(a,b){ return new Date(b.di)-new Date(a.di); }).slice(0,5);
+  var rl = document.getElementById('recList');
+  if(!rec.length){ rl.innerHTML='<div class="es"><div class="ei">📋</div><p>Nenhum registro ainda</p></div>'; }
+  else {
+    rl.innerHTML = rec.map(function(r){
+      var a=D.p.find(function(x){return x.id===r.aid;}); var s=D.p.find(function(x){return x.id===r.sid;});
+      var sc=r.st==='Confirmada'?'bs':r.st==='Recusou'?'bd':'bw';
+      return '<div class="rr" onclick="verReg(\''+r.id+'\')" style="cursor:pointer">'+
+        '<div style="flex:1"><div style="font-weight:700;font-size:.87rem">'+(a?a.nome:'—')+'</div>'+
+        '<div style="font-size:.73rem;color:var(--t2)">'+r.ta+' • '+fD(r.di)+' • '+r.dias+' dia(s)</div></div>'+
+        '<div style="text-align:right"><div style="font-size:.75rem;color:var(--t2);margin-bottom:3px">'+(s?'→ '+s.nome.split(' ')[0]:'—')+'</div>'+
+        '<span class="badge '+sc+'">'+r.st+'</span></div></div>';
     }).join('');
   }
-
-  // Motivos chart
-  const motivos = {};
-  subsMes.forEach(s => { motivos[s.motivo] = (motivos[s.motivo] || 0) + 1; });
-  const mc = document.getElementById('motivosChart');
-  if (Object.keys(motivos).length === 0) {
-    mc.innerHTML = '<div class="empty-state"><div class="icon">📊</div><p>Nenhum dado ainda</p></div>';
-  } else {
-    const max = Math.max(...Object.values(motivos));
-    mc.innerHTML = Object.entries(motivos).sort((a,b) => b[1]-a[1]).map(([m, c]) => `
-      <div style="margin-bottom:12px">
-        <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-          <span style="font-size:0.82rem;font-weight:700">${m}</span>
-          <span style="font-size:0.82rem;color:var(--primary);font-weight:800">${c}</span>
-        </div>
-        <div style="height:8px;background:var(--border);border-radius:10px;overflow:hidden">
-          <div style="width:${(c/max*100)}%;height:100%;background:linear-gradient(90deg,var(--primary),var(--primary-light));border-radius:10px"></div>
-        </div>
-      </div>`).join('');
+  var mo = {}; rm.forEach(function(r){ mo[r.mot]=(mo[r.mot]||0)+1; });
+  var mc = document.getElementById('motChart');
+  if(!Object.keys(mo).length){ mc.innerHTML='<div class="es"><div class="ei">📊</div><p>Nenhum dado ainda</p></div>'; }
+  else {
+    var mx = Math.max.apply(null, Object.values(mo));
+    mc.innerHTML = Object.entries(mo).sort(function(a,b){return b[1]-a[1];}).map(function(e){
+      return '<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;margin-bottom:4px">'+
+        '<span style="font-size:.81rem;font-weight:700">'+e[0]+'</span><span style="font-size:.81rem;color:var(--p);font-weight:800">'+e[1]+'</span></div>'+
+        '<div class="rbar"><div class="rbf" style="width:'+(e[1]/mx*100)+'%"></div></div></div>';
+    }).join('');
   }
-
-  // Turmas grid
-  const tg = document.getElementById('turmasGrid');
-  tg.innerHTML = Object.entries(TURMAS).map(([t, info]) => {
-    const profs = data.professoras.filter(p => p.turma === t);
-    const tipo = info.tipo === 'integral' ? '<span class="badge badge-integral">⏰ Integral</span>' :
-      info.tipo === 'manha' ? '<span class="badge badge-morning">🌅 Manhã</span>' :
-      '<span class="badge badge-afternoon">🌇 Tarde</span>';
-    return `<div style="background:var(--bg);border-radius:10px;padding:12px 14px;border:1px solid var(--border)">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-        <span style="font-family:'Nunito',sans-serif;font-weight:800;font-size:0.9rem">${t}</span>
-        ${tipo}
-      </div>
-      ${profs.length === 0 ? '<div style="font-size:0.78rem;color:var(--text3)">Nenhuma professora</div>' :
-        profs.map(p => `<div style="font-size:0.8rem;color:var(--text2);padding:2px 0">👩‍🏫 ${p.nome.split(' ')[0]} ${p.nome.split(' ')[1]||''}</div>`).join('')}
-    </div>`;
+  var tg = document.getElementById('turGrid');
+  tg.innerHTML = Object.keys(TUR).map(function(t){
+    var ti=TUR[t]; var bg=ti==='i'?'<span class="badge bi2">⏰ Integral</span>':ti==='m'?'<span class="badge bm">🌅 Manhã</span>':'<span class="badge ba">🌇 Tarde</span>';
+    var ps = D.p.filter(function(x){return x.turma===t;});
+    return '<div style="background:var(--bg);border-radius:10px;padding:11px 13px;border:1px solid var(--br)">'+
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">'+
+      '<span style="font-family:\'Nunito\',sans-serif;font-weight:800;font-size:.86rem">'+t+'</span>'+bg+'</div>'+
+      (ps.length ? ps.map(function(p){return '<div style="font-size:.78rem;color:var(--t2);padding:2px 0">👩‍🏫 '+p.nome+'</div>';}).join('') :
+        '<div style="font-size:.76rem;color:var(--t3)">Sem professora</div>')+'</div>';
   }).join('');
 }
 
-// ========== CALENDAR ==========
-function renderCalendar() {
-  const months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-  document.getElementById('calTitle').textContent = months[currentMonth] + ' ' + currentYear;
-
-  const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-  const today = new Date();
-
-  const grid = document.getElementById('calGrid');
-  const days = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
-  let html = days.map(d => `<div class="cal-day-name">${d}</div>`).join('');
-
-  for (let i = 0; i < firstDay; i++) {
-    html += `<div class="cal-day other-month"></div>`;
+// CALENDÁRIO
+function rCal() {
+  var mns=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  document.getElementById('calT').textContent = mns[cMon]+' '+cYr;
+  var fd=new Date(cYr,cMon,1).getDay(), dim=new Date(cYr,cMon+1,0).getDate(), td=new Date();
+  var h=(['Dom','Seg','Ter','Qua','Qui','Sex','Sáb']).map(function(d){return'<div class="cdn">'+d+'</div>';}).join('');
+  for(var i=0;i<fd;i++) h+='<div class="cd om"></div>';
+  for(var d=1;d<=dim;d++){
+    var ds=cYr+'-'+String(cMon+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+    var sbs=D.r.filter(function(r){var ini=new Date(r.di+'T12:00:00');var fim=new Date(ini);fim.setDate(fim.getDate()+r.dias-1);var c=new Date(ds+'T12:00:00');return c>=ini&&c<=fim;});
+    var iT=d===td.getDate()&&cMon===td.getMonth()&&cYr===td.getFullYear();
+    var iS=selDate===ds;
+    var hM=sbs.some(function(r){return r.pa==='Manhã';}); var hA=sbs.some(function(r){return r.pa==='Tarde';});
+    h+='<div class="cd'+(iT?' today':'')+(sbs.length?' hev':'')+(iS?' sel':'')+'" onclick="selD(\''+ds+'\')">'+
+      '<div class="dn">'+d+'</div><div class="ddots">'+
+      (hM?'<div class="dot m"></div>':'')+(hA?'<div class="dot a"></div>':'')+
+      '</div></div>';
   }
+  document.getElementById('calG').innerHTML = h;
+  if(selDate) rDay(selDate);
+}
+function chMon(d){ cMon+=d; if(cMon>11){cMon=0;cYr++;} if(cMon<0){cMon=11;cYr--;} rCal(); }
+function goToday(){ var n=new Date(); cMon=n.getMonth(); cYr=n.getFullYear(); rCal(); }
+function selD(ds){ selDate=ds; document.getElementById('addBtn').style.display=''; rCal(); rDay(ds); }
 
-  for (let d = 1; d <= daysInMonth; d++) {
-    const dateStr = `${currentYear}-${String(currentMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-    const subs = data.substituicoes.filter(s => {
-      const ini = new Date(s.dataIni + 'T12:00:00');
-      const fim = new Date(ini); fim.setDate(fim.getDate() + parseInt(s.dias) - 1);
-      const cur = new Date(dateStr + 'T12:00:00');
-      return cur >= ini && cur <= fim;
-    });
-    const isToday = d === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear();
-    const hasManha = subs.some(s => s.periodoAusente === 'Manhã');
-    const hasTarde = subs.some(s => s.periodoAusente === 'Tarde');
-    const isSelected = selectedDate === dateStr;
-    html += `<div class="cal-day${isToday?' today':''}${subs.length>0?' has-event':''}${isSelected?' has-event':''}"
-      style="${isSelected ? 'border-color:var(--accent);background:var(--warning-light)' : ''}"
-      onclick="selectDate('${dateStr}')">
-      <div class="day-num">${d}</div>
-      <div class="day-dots">
-        ${hasManha ? '<div class="day-dot morning"></div>' : ''}
-        ${hasTarde ? '<div class="day-dot afternoon"></div>' : ''}
-      </div>
-    </div>`;
+function rDay(ds) {
+  document.getElementById('dayT').textContent = '📅 '+fD(ds);
+  var sbs=D.r.filter(function(r){var ini=new Date(r.di+'T12:00:00');var fim=new Date(ini);fim.setDate(fim.getDate()+r.dias-1);var c=new Date(ds+'T12:00:00');return c>=ini&&c<=fim;});
+  var dl=document.getElementById('dayList');
+  if(!sbs.length){
+    dl.innerHTML='<div class="es"><div class="ei">✅</div><p>Nenhuma substituição neste dia</p><button class="btn bp bsm" style="margin-top:10px" onclick="openSubModal()">+ Novo Registro</button></div>';
+    return;
   }
-  grid.innerHTML = html;
-
-  if (selectedDate) renderDayPanel(selectedDate);
+  dl.innerHTML = sbs.map(function(r){
+    var a=D.p.find(function(x){return x.id===r.aid;}); var s=D.p.find(function(x){return x.id===r.sid;});
+    var sc=r.st==='Confirmada'?'bs':r.st==='Recusou'?'bd':'bw';
+    return '<div class="rr" style="cursor:pointer" onclick="verReg(\''+r.id+'\')">'+
+      '<div style="flex:1"><div style="font-weight:700">'+(a?a.nome:'—')+'</div>'+
+      '<div style="font-size:.73rem;color:var(--t2)">'+r.ta+' • '+r.mot+'</div>'+
+      '<div style="font-size:.73rem;color:var(--t2);margin-top:2px">→ '+(s?s.nome:'—')+'</div></div>'+
+      '<div style="text-align:right;display:flex;flex-direction:column;gap:4px;align-items:flex-end">'+
+      '<span class="badge '+(r.pa==='Manhã'?'bm':'ba')+'">'+r.pa+'</span>'+
+      '<span class="badge '+sc+'">'+r.st+'</span></div></div>';
+  }).join('')+'<div style="padding:12px 16px"><button class="btn bp bsm" onclick="openSubModal()">+ Novo Registro</button></div>';
 }
 
-function changeMonth(dir) {
-  currentMonth += dir;
-  if (currentMonth > 11) { currentMonth = 0; currentYear++; }
-  if (currentMonth < 0) { currentMonth = 11; currentYear--; }
-  renderCalendar();
+function openSubModal(){
+  editId=null;
+  document.getElementById('mSubT').textContent='📝 Novo Registro de Substituição';
+  ['sAus','sTurma','sPer','sMot','sObs'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('sData').value=selDate||new Date().toISOString().substr(0,10);
+  document.getElementById('sDias').value=1; document.getElementById('sSt').value='Confirmada';
+  document.getElementById('sInd').style.display='none'; document.getElementById('mAlert').style.display='none';
+  document.getElementById('sSub').innerHTML='<option value="">Selecione...</option>';
+  var sel=document.getElementById('sAus');
+  sel.innerHTML='<option value="">Selecione...</option>'+
+    D.p.slice().sort(function(a,b){return a.nome.localeCompare(b.nome);}).map(function(p){
+      return'<option value="'+p.id+'">'+p.nome+' — '+p.turma+' ('+p.periodo+')</option>';
+    }).join('');
+  openMo('mSub');
 }
 
-function goToday() {
-  const now = new Date();
-  currentMonth = now.getMonth();
-  currentYear = now.getFullYear();
-  renderCalendar();
+function onAus(){
+  var id=document.getElementById('sAus').value;
+  var p=D.p.find(function(x){return x.id===id;}); if(!p) return;
+  document.getElementById('sTurma').value=p.turma;
+  document.getElementById('sPer').value=p.periodo;
+  var el=getElig(id);
+  document.getElementById('sSub').innerHTML='<option value="">Selecione...</option>'+
+    el.map(function(x){return'<option value="'+x.id+'">'+x.nome+' — '+x.turma+' ('+x.periodo+') — '+x.pts+' pts</option>';}).join('');
+  if(el.length){
+    document.getElementById('sInd').style.display='block';
+    document.getElementById('sIndA').innerHTML='⭐ <strong>Indicação automática da fila:</strong> '+el[0].nome+' ('+el[0].pts+' pts) — '+el[0].periodo;
+    document.getElementById('sSub').value=el[0].id;
+  } else { document.getElementById('sInd').style.display='none'; }
+  var al=document.getElementById('mAlert'); al.style.display='block'; al.className='al ai';
+  al.innerHTML='ℹ️ '+p.nome+' é do período <strong>'+p.periodo+'</strong>. A substituta deve ser do período <strong>'+opp(p.periodo)+'</strong>.';
 }
 
-function selectDate(dateStr) {
-  selectedDate = dateStr;
-  renderCalendar();
-  renderDayPanel(dateStr);
-  document.getElementById('addDayBtn').style.display = '';
+function salvarReg(){
+  var aid=document.getElementById('sAus').value, mot=document.getElementById('sMot').value,
+    di=document.getElementById('sData').value, dias=document.getElementById('sDias').value,
+    sid=document.getElementById('sSub').value, st=document.getElementById('sSt').value,
+    obs=document.getElementById('sObs').value;
+  if(!aid||!mot||!di||!dias||!sid){ toast('Preencha todos os campos obrigatórios!','error'); return; }
+  var a=D.p.find(function(x){return x.id===aid;}); var s=D.p.find(function(x){return x.id===sid;});
+  if(a&&s&&a.periodo===s.periodo){ toast('A substituta deve ser do período oposto!','error'); return; }
+  var id=editId||gId();
+  var reg={id:id,aid:aid,ta:a?a.turma:'',pa:a?a.periodo:'',mot:mot,di:di,dias:parseInt(dias),sid:sid,st:st,obs:obs,cr:new Date().toISOString()};
+  if(editId){ var i=D.r.findIndex(function(r){return r.id===editId;}); D.r[i]=reg; }
+  else D.r.push(reg);
+  if(st==='Confirmada'&&s) s.pts+=parseInt(dias);
+  else if(st==='Recusou'&&s){ var mx=0; D.p.forEach(function(x){if(x.pts>mx)mx=x.pts;}); s.pts=mx+100; toast('Professora recusou — movida para o final da fila!','warning'); }
+  sv(); closeMo('mSub'); toast('Registro salvo!'); rCal(); rDash(); rRank();
 }
 
-function renderDayPanel(dateStr) {
-  document.getElementById('dayPanelTitle').textContent = '📅 ' + formatDate(dateStr);
-  const subs = data.substituicoes.filter(s => {
-    const ini = new Date(s.dataIni + 'T12:00:00');
-    const fim = new Date(ini); fim.setDate(fim.getDate() + parseInt(s.dias) - 1);
-    const cur = new Date(dateStr + 'T12:00:00');
-    return cur >= ini && cur <= fim;
-  });
-  const dl = document.getElementById('daySubsList');
-  if (subs.length === 0) {
-    dl.innerHTML = `<div class="empty-state"><div class="icon">✅</div><p>Nenhuma substituição neste dia</p><button class="btn btn-primary btn-sm" style="margin-top:10px" onclick="openNewSubModal()">+ Registrar Substituição</button></div>`;
-  } else {
-    dl.innerHTML = subs.map(s => {
-      const ausente = data.professoras.find(p => p.id === s.ausenteId);
-      const sub = data.professoras.find(p => p.id === s.substitutaId);
-      const statusBadge = s.status === 'Confirmada' ? 'badge-success' : s.status === 'Recusada' ? 'badge-danger' : 'badge-warning';
-      return `<div class="rank-row" style="cursor:pointer" onclick="viewSub('${s.id}')">
-        <div style="flex:1">
-          <div style="font-weight:700">${ausente ? ausente.nome : '—'}</div>
-          <div style="font-size:0.75rem;color:var(--text2)">${s.turmaAusente} • ${s.motivo}</div>
-          <div style="font-size:0.75rem;color:var(--text2);margin-top:2px">→ Substituta: ${sub ? sub.nome : '—'}</div>
-        </div>
-        <div style="text-align:right;display:flex;flex-direction:column;gap:4px;align-items:flex-end">
-          <span class="badge ${s.periodoAusente === 'Manhã' ? 'badge-morning' : 'badge-afternoon'}">${s.periodoAusente}</span>
-          <span class="badge ${statusBadge}">${s.status}</span>
-        </div>
-      </div>`;
-    }).join('') + `<div style="padding:12px 16px"><button class="btn btn-primary btn-sm" onclick="openNewSubModal()">+ Nova Substituição</button></div>`;
-  }
+function verReg(id){
+  var r=D.r.find(function(x){return x.id===id;}); if(!r) return;
+  var a=D.p.find(function(x){return x.id===r.aid;}); var s=D.p.find(function(x){return x.id===r.sid;});
+  var sc=r.st==='Confirmada'?'bs':r.st==='Recusou'?'bd':'bw'; var mc2=MCSS[r.mot]||'mo3';
+  document.getElementById('mVBody').innerHTML=
+    '<div class="fr"><div><div style="font-size:.71rem;font-weight:800;color:var(--t2);text-transform:uppercase;margin-bottom:4px">Professora Ausente</div>'+
+    '<div style="font-weight:700">'+(a?a.nome:'—')+'</div></div>'+
+    '<div><div style="font-size:.71rem;font-weight:800;color:var(--t2);text-transform:uppercase;margin-bottom:4px">Turma / Período</div>'+
+    '<div>'+r.ta+' — '+r.pa+'</div></div></div>'+
+    '<div class="fr"><div><div style="font-size:.71rem;font-weight:800;color:var(--t2);text-transform:uppercase;margin-bottom:4px">Motivo</div>'+
+    '<span class="badge '+mc2+'">'+r.mot+'</span></div>'+
+    '<div><div style="font-size:.71rem;font-weight:800;color:var(--t2);text-transform:uppercase;margin-bottom:4px">Afastamento</div>'+
+    '<div>'+fD(r.di)+' — '+r.dias+' dia(s)</div></div></div>'+
+    '<hr class="dvd">'+
+    '<div class="fr"><div><div style="font-size:.71rem;font-weight:800;color:var(--t2);text-transform:uppercase;margin-bottom:4px">Substituta</div>'+
+    '<div style="font-weight:700">'+(s?s.nome:'—')+'</div>'+(s?'<div style="font-size:.74rem;color:var(--t2)">'+s.turma+' — '+s.periodo+'</div>':'')+
+    '</div><div><div style="font-size:.71rem;font-weight:800;color:var(--t2);text-transform:uppercase;margin-bottom:4px">Status</div>'+
+    '<span class="badge '+sc+'">'+r.st+'</span></div></div>'+
+    (r.obs?'<div style="padding:9px 11px;background:var(--bg);border-radius:8px;font-size:.83rem;color:var(--t2);margin-top:6px"><strong>Obs:</strong> '+r.obs+'</div>':'');
+  document.getElementById('mVDel').onclick=function(){ excReg(id); closeMo('mView'); };
+  openMo('mView');
 }
+function excReg(id){ D.r=D.r.filter(function(r){return r.id!==id;}); sv(); toast('Registro excluído.','warning'); rCal(); rDash(); rRank(); renderHist(); }
 
-function openNewSubModal() {
-  editingSubId = null;
-  document.getElementById('modalSubTitle').textContent = '📝 Registrar Substituição';
-  document.getElementById('subAusente').value = '';
-  document.getElementById('subTurma').value = '';
-  document.getElementById('subPeriodoAusente').value = '';
-  document.getElementById('subMotivo').value = '';
-  document.getElementById('subDataIni').value = selectedDate || new Date().toISOString().substr(0,10);
-  document.getElementById('subDias').value = 1;
-  document.getElementById('subStatus').value = 'Confirmada';
-  document.getElementById('subObs').value = '';
-  document.getElementById('subSugestao').style.display = 'none';
-  document.getElementById('modalSubAlert').style.display = 'none';
-  populateSubSelects();
-  openModal('modalSub');
-}
-
-function populateSubSelects() {
-  const sel = document.getElementById('subAusente');
-  sel.innerHTML = '<option value="">Selecione...</option>' +
-    [...data.professoras].sort((a,b) => a.nome.localeCompare(b.nome)).map(p =>
-      `<option value="${p.id}">${p.nome} — ${p.turma} (${p.periodo})</option>`).join('');
-}
-
-function onAusenteChange() {
-  const id = document.getElementById('subAusente').value;
-  const prof = data.professoras.find(p => p.id === id);
-  if (prof) {
-    document.getElementById('subTurma').value = prof.turma;
-    document.getElementById('subPeriodoAusente').value = prof.periodo;
-    // sugestão
-    const elegiveis = getProfElegiveis(id);
-    const sub = document.getElementById('subSubstituta');
-    sub.innerHTML = '<option value="">Selecione...</option>' +
-      elegiveis.map(p => `<option value="${p.id}">${p.nome} — ${p.turma} (${p.periodo}) — ${p.pontos} pts</option>`).join('');
-    if (elegiveis.length > 0) {
-      document.getElementById('subSugestao').style.display = 'block';
-      document.getElementById('subSugestaoAlert').innerHTML = `⭐ <strong>Sugestão pela fila:</strong> ${elegiveis[0].nome} (${elegiveis[0].pontos} pts) — período ${elegiveis[0].periodo}`;
-      sub.value = elegiveis[0].id;
-    } else {
-      document.getElementById('subSugestao').style.display = 'none';
-    }
-    const alert = document.getElementById('modalSubAlert');
-    alert.style.display = 'block';
-    alert.className = 'alert alert-info';
-    alert.innerHTML = `ℹ️ ${prof.nome} é do período <strong>${prof.periodo}</strong>. A substituta deve ser do período <strong>${getPeriodoOposto(prof.periodo)}</strong>.`;
-  }
-}
-
-function salvarSubstituicao() {
-  const ausenteId = document.getElementById('subAusente').value;
-  const motivo = document.getElementById('subMotivo').value;
-  const dataIni = document.getElementById('subDataIni').value;
-  const dias = document.getElementById('subDias').value;
-  const substitutaId = document.getElementById('subSubstituta').value;
-  const status = document.getElementById('subStatus').value;
-  const obs = document.getElementById('subObs').value;
-
-  if (!ausenteId || !motivo || !dataIni || !dias || !substitutaId) {
-    toast('Preencha todos os campos obrigatórios!', 'error'); return;
-  }
-
-  const ausente = data.professoras.find(p => p.id === ausenteId);
-  const sub = data.professoras.find(p => p.id === substitutaId);
-
-  // Validação período oposto
-  if (ausente && sub && ausente.periodo === sub.periodo) {
-    toast('❌ A substituta deve ser do período oposto!', 'error'); return;
-  }
-
-  const id = editingSubId || genId();
-  const record = {
-    id, ausenteId,
-    turmaAusente: ausente ? ausente.turma : '',
-    periodoAusente: ausente ? ausente.periodo : '',
-    motivo, dataIni,
-    dias: parseInt(dias),
-    substitutaId, status, obs,
-    createdAt: new Date().toISOString()
-  };
-
-  if (editingSubId) {
-    const idx = data.substituicoes.findIndex(s => s.id === editingSubId);
-    data.substituicoes[idx] = record;
-  } else {
-    data.substituicoes.push(record);
-  }
-
-  // Atualizar pontos
-  if (status === 'Confirmada') {
-    const subProf = data.professoras.find(p => p.id === substitutaId);
-    if (subProf) subProf.pontos += parseInt(dias);
-  } else if (status === 'Recusada') {
-    const subProf = data.professoras.find(p => p.id === substitutaId);
-    if (subProf) subProf.pontos += 999; // vai para o final da fila
-    toast('⚠️ Professora recusou — foi movida para o final da fila!', 'warning');
-  }
-
-  save();
-  closeModal('modalSub');
-  toast('Substituição registrada com sucesso!');
-  renderCalendar();
-  renderDashboard();
-  renderRanking();
-  updateSelects();
-}
-
-function viewSub(id) {
-  const s = data.substituicoes.find(x => x.id === id);
-  if (!s) return;
-  const ausente = data.professoras.find(p => p.id === s.ausenteId);
-  const sub = data.professoras.find(p => p.id === s.substitutaId);
-  const statusBadge = s.status === 'Confirmada' ? 'badge-success' : s.status === 'Recusada' ? 'badge-danger' : 'badge-warning';
-  const motivoClass = MOTIVO_COLORS[s.motivo] || 'motivo-outro';
-  document.getElementById('modalViewBody').innerHTML = `
-    <div class="form-row">
-      <div><div style="font-size:0.72rem;font-weight:700;color:var(--text2);text-transform:uppercase;margin-bottom:4px">Professora Ausente</div>
-        <div style="font-weight:700">${ausente ? ausente.nome : '—'}</div></div>
-      <div><div style="font-size:0.72rem;font-weight:700;color:var(--text2);text-transform:uppercase;margin-bottom:4px">Turma / Período</div>
-        <div>${s.turmaAusente} — ${s.periodoAusente}</div></div>
-    </div>
-    <div class="form-row">
-      <div><div style="font-size:0.72rem;font-weight:700;color:var(--text2);text-transform:uppercase;margin-bottom:4px">Motivo</div>
-        <span class="badge ${motivoClass}">${s.motivo}</span></div>
-      <div><div style="font-size:0.72rem;font-weight:700;color:var(--text2);text-transform:uppercase;margin-bottom:4px">Período de Afastamento</div>
-        <div>${formatDate(s.dataIni)} — ${s.dias} dia(s)</div></div>
-    </div>
-    <hr class="divider">
-    <div class="form-row">
-      <div><div style="font-size:0.72rem;font-weight:700;color:var(--text2);text-transform:uppercase;margin-bottom:4px">Substituta</div>
-        <div style="font-weight:700">${sub ? sub.nome : '—'}</div>
-        ${sub ? `<div style="font-size:0.76rem;color:var(--text2)">${sub.turma} — ${sub.periodo}</div>` : ''}
-      </div>
-      <div><div style="font-size:0.72rem;font-weight:700;color:var(--text2);text-transform:uppercase;margin-bottom:4px">Status</div>
-        <span class="badge ${statusBadge}">${s.status}</span></div>
-    </div>
-    ${s.obs ? `<div style="margin-top:8px;padding:10px 12px;background:var(--bg);border-radius:8px;font-size:0.85rem;color:var(--text2)"><strong>Obs:</strong> ${s.obs}</div>` : ''}
-  `;
-  document.getElementById('modalViewDelete').onclick = () => { deleteSub(id); closeModal('modalView'); };
-  openModal('modalView');
-}
-
-function deleteSub(id) {
-  data.substituicoes = data.substituicoes.filter(s => s.id !== id);
-  save();
-  toast('Substituição excluída.', 'warning');
-  renderCalendar(); renderDashboard(); renderRanking(); renderHistorico();
-}
-
-// ========== RANKING ==========
-function renderRanking() {
-  const manha = [...data.professoras].filter(p => p.periodo === 'Manhã').sort((a,b) => a.pontos - b.pontos);
-  const tarde = [...data.professoras].filter(p => p.periodo === 'Tarde').sort((a,b) => a.pontos - b.pontos);
-  const maxM = manha.length > 0 ? Math.max(...manha.map(p => p.pontos), 1) : 1;
-  const maxT = tarde.length > 0 ? Math.max(...tarde.map(p => p.pontos), 1) : 1;
-
-  function buildRank(list, max, containerId) {
-    const el = document.getElementById(containerId);
-    if (list.length === 0) {
-      el.innerHTML = '<div class="empty-state"><div class="icon">👩‍🏫</div><p>Nenhuma professora cadastrada</p></div>'; return;
-    }
-    el.innerHTML = list.map((p, i) => {
-      const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-other';
-      const emoji = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1);
-      return `<div class="rank-row">
-        <div class="rank-num ${rankClass}">${emoji}</div>
-        <div style="flex:1;min-width:0">
-          <div class="rank-name">${p.nome}</div>
-          <div class="rank-turma">${p.turma}</div>
-          <div class="rank-bar-wrap" style="max-width:100%;margin-top:4px">
-            <div class="rank-bar"><div class="rank-bar-fill" style="width:${max > 0 ? (p.pontos/max*100) : 0}%"></div></div>
-          </div>
-        </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
-          <div class="rank-points">${p.pontos} pts</div>
-          ${i === 0 ? '<span class="next-badge">PRÓXIMA</span>' : ''}
-        </div>
-      </div>`;
+// RANKING
+function rRank(){
+  var mh=D.p.filter(function(x){return x.periodo==='Manhã';}).sort(function(a,b){return a.pts-b.pts;});
+  var td2=D.p.filter(function(x){return x.periodo==='Tarde';}).sort(function(a,b){return a.pts-b.pts;});
+  function bld(list,elId){
+    var el=document.getElementById(elId);
+    if(!list.length){el.innerHTML='<div class="es"><div class="ei">👩‍🏫</div><p>Nenhuma professora cadastrada</p></div>';return;}
+    var mx=Math.max.apply(null,list.map(function(x){return x.pts;}))||1;
+    el.innerHTML=list.map(function(p,i){
+      var rc=i===0?'r1':i===1?'r2':i===2?'r3':'ro'; var em=i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1);
+      return '<div class="rr"><div class="rn '+rc+'">'+em+'</div>'+
+        '<div style="flex:1;min-width:0"><div style="font-weight:700;font-size:.89rem">'+p.nome+'</div>'+
+        '<div style="font-size:.74rem;color:var(--t2)">'+p.turma+'</div>'+
+        '<div class="rbar"><div class="rbf" style="width:'+(mx>0?p.pts/mx*100:0)+'%"></div></div></div>'+
+        '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">'+
+        '<div style="font-family:\'Nunito\',sans-serif;font-weight:900;font-size:1rem;color:var(--p)">'+p.pts+' pts</div>'+
+        (i===0?'<span class="nbdg">PRÓXIMA</span>':'')+'</div></div>';
     }).join('');
   }
-
-  buildRank(manha, maxM, 'rankManha');
-  buildRank(tarde, maxT, 'rankTarde');
-
-  // Ajuste select
-  const sel = document.getElementById('ajusteProfSelect');
-  sel.innerHTML = '<option value="">Selecione...</option>' +
-    [...data.professoras].sort((a,b) => a.nome.localeCompare(b.nome)).map(p =>
-      `<option value="${p.id}">${p.nome} (${p.pontos} pts)</option>`).join('');
+  bld(mh,'rkM'); bld(td2,'rkT');
+  document.getElementById('ajPr').innerHTML='<option value="">Selecione...</option>'+
+    D.p.slice().sort(function(a,b){return a.nome.localeCompare(b.nome);}).map(function(p){
+      return'<option value="'+p.id+'">'+p.nome+' ('+p.pts+' pts)</option>';}).join('');
+}
+function ajustarPts(){
+  var id=document.getElementById('ajPr').value, op=document.getElementById('ajOp').value, pts=parseInt(document.getElementById('ajPts').value);
+  if(!id||isNaN(pts)){toast('Selecione uma professora e informe os pontos!','error');return;}
+  var p=D.p.find(function(x){return x.id===id;}); if(!p) return;
+  if(op==='set') p.pts=pts; else if(op==='add') p.pts+=pts; else p.pts=Math.max(0,p.pts-pts);
+  sv(); rRank(); toast('Pontuação de '+p.nome.split(' ')[0]+' atualizada para '+p.pts+' pts!');
 }
 
-function ajustarPontuacao() {
-  const id = document.getElementById('ajusteProfSelect').value;
-  const op = document.getElementById('ajusteOp').value;
-  const pts = parseInt(document.getElementById('ajustePts').value);
-  if (!id || isNaN(pts)) { toast('Selecione uma professora e informe os pontos!', 'error'); return; }
-  const prof = data.professoras.find(p => p.id === id);
-  if (!prof) return;
-  if (op === 'set') prof.pontos = pts;
-  else if (op === 'add') prof.pontos += pts;
-  else if (op === 'sub') prof.pontos = Math.max(0, prof.pontos - pts);
-  save();
-  renderRanking();
-  toast(`Pontuação de ${prof.nome} atualizada para ${prof.pontos} pts!`);
+// PROFESSORAS
+function salvarProf(){
+  var nome=document.getElementById('pNome').value.trim(), turma=document.getElementById('pTurma').value,
+    per=document.getElementById('pPer').value, pts=parseInt(document.getElementById('pPts').value)||0,
+    eid=document.getElementById('ePId').value;
+  if(!nome||!turma||!per){toast('Preencha nome, turma e período!','error');return;}
+  var tt=TUR[turma];
+  if(tt==='m'&&per!=='Manhã'){toast(turma+' é uma turma de Manhã!','error');return;}
+  if(tt==='t'&&per!=='Tarde'){toast(turma+' é uma turma de Tarde!','error');return;}
+  if(eid){var p=D.p.find(function(x){return x.id===eid;});if(p){p.nome=nome;p.turma=turma;p.periodo=per;p.pts=pts;}}
+  else D.p.push({id:gId(),nome:nome,turma:turma,periodo:per,pts:pts});
+  sv(); cancelProf(); renderProfs(); rRank(); rDash(); toast(eid?'Professora atualizada!':'Professora cadastrada!');
 }
-
-// ========== PROFESSORAS ==========
-function salvarProfessora() {
-  const nome = document.getElementById('profNome').value.trim();
-  const turma = document.getElementById('profTurma').value;
-  const periodo = document.getElementById('profPeriodo').value;
-  const pontos = parseInt(document.getElementById('profPontos').value) || 0;
-  const editId = document.getElementById('editProfId').value;
-
-  if (!nome || !turma || !periodo) { toast('Preencha nome, turma e período!', 'error'); return; }
-
-  // Validação Maternal II
-  const turmaInfo = TURMAS[turma];
-  if (turmaInfo && turmaInfo.tipo === 'manha' && periodo !== 'Manhã') {
-    toast(`${turma} é uma turma de Manhã — o período deve ser Manhã!`, 'error'); return;
-  }
-  if (turmaInfo && turmaInfo.tipo === 'tarde' && periodo !== 'Tarde') {
-    toast(`${turma} é uma turma de Tarde — o período deve ser Tarde!`, 'error'); return;
-  }
-
-  if (editId) {
-    const prof = data.professoras.find(p => p.id === editId);
-    if (prof) { prof.nome = nome; prof.turma = turma; prof.periodo = periodo; prof.pontos = pontos; }
-  } else {
-    data.professoras.push({ id: genId(), nome, turma, periodo, pontos });
-  }
-  save();
-  cancelarEditProfessora();
-  renderProfLista();
-  renderRanking();
-  renderDashboard();
-  updateSelects();
-  toast(editId ? 'Professora atualizada!' : 'Professora cadastrada!');
+function cancelProf(){
+  document.getElementById('ePId').value=''; document.getElementById('pNome').value='';
+  document.getElementById('pTurma').value=''; document.getElementById('pPer').value='';
+  document.getElementById('pPts').value=0; document.getElementById('fPT').textContent='Nova Professora';
 }
-
-function cancelarEditProfessora() {
-  document.getElementById('editProfId').value = '';
-  document.getElementById('profNome').value = '';
-  document.getElementById('profTurma').value = '';
-  document.getElementById('profPeriodo').value = '';
-  document.getElementById('profPontos').value = 0;
-  document.getElementById('formProfTitle').textContent = 'Nova Professora';
+function setPTab(tab,btn){
+  pTab=tab;
+  document.querySelectorAll('#sec-professoras .tb').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active'); renderProfs();
 }
-
-function editProf(id) {
-  const p = data.professoras.find(x => x.id === id);
-  if (!p) return;
-  document.getElementById('editProfId').value = p.id;
-  document.getElementById('profNome').value = p.nome;
-  document.getElementById('profTurma').value = p.turma;
-  document.getElementById('profPeriodo').value = p.periodo;
-  document.getElementById('profPontos').value = p.pontos;
-  document.getElementById('formProfTitle').textContent = '✏️ Editar Professora';
-  document.getElementById('profNome').focus();
-}
-
-function deleteProf(id) {
-  if (!confirm('Excluir esta professora?')) return;
-  data.professoras = data.professoras.filter(p => p.id !== id);
-  save();
-  renderProfLista(); renderRanking(); renderDashboard(); updateSelects();
-  toast('Professora removida.', 'warning');
-}
-
-let profTabFilter = 'todas';
-function switchProfTab(tab, btn) {
-  profTabFilter = tab;
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderProfLista();
-}
-
-function renderProfLista() {
-  const search = (document.getElementById('profSearch')?.value || '').toLowerCase();
-  let list = [...data.professoras];
-  if (profTabFilter === 'manha') list = list.filter(p => p.periodo === 'Manhã');
-  if (profTabFilter === 'tarde') list = list.filter(p => p.periodo === 'Tarde');
-  if (search) list = list.filter(p => p.nome.toLowerCase().includes(search) || p.turma.toLowerCase().includes(search));
-  list.sort((a,b) => a.nome.localeCompare(b.nome));
-
-  document.getElementById('profCount').textContent = data.professoras.length;
-  const el = document.getElementById('profLista');
-  if (list.length === 0) {
-    el.innerHTML = '<div class="empty-state"><div class="icon">👩‍🏫</div><p>Nenhuma professora encontrada</p></div>'; return;
-  }
-  el.innerHTML = list.map(p => `
-    <div class="prof-card">
-      <div class="prof-avatar">${p.nome.charAt(0).toUpperCase()}</div>
-      <div class="prof-info">
-        <div class="prof-name">${p.nome}</div>
-        <div class="prof-meta">${p.turma} • <span class="${p.periodo === 'Manhã' ? 'period-pill morning' : 'period-pill afternoon'}">${p.periodo === 'Manhã' ? '🌅' : '🌇'} ${p.periodo}</span></div>
-      </div>
-      <div class="prof-points">${p.pontos}<span style="font-size:0.68rem;font-weight:600;color:var(--text2)"> pts</span></div>
-      <div style="display:flex;gap:4px">
-        <button class="btn btn-ghost btn-icon btn-sm" onclick="editProf('${p.id}')" title="Editar">✏️</button>
-        <button class="btn btn-ghost btn-icon btn-sm" onclick="deleteProf('${p.id}')" title="Excluir">🗑️</button>
-      </div>
-    </div>`).join('');
-}
-
-// ========== HISTÓRICO ==========
-function renderHistorico() {
-  let list = [...data.substituicoes].sort((a,b) => new Date(b.dataIni) - new Date(a.dataIni));
-  const filtroProf = document.getElementById('filtroProf')?.value;
-  const filtroPeriodo = document.getElementById('filtroPeriodo')?.value;
-  const filtroMotivo = document.getElementById('filtroMotivo')?.value;
-  if (filtroProf) list = list.filter(s => s.ausenteId === filtroProf || s.substitutaId === filtroProf);
-  if (filtroPeriodo) list = list.filter(s => s.periodoAusente === filtroPeriodo);
-  if (filtroMotivo) list = list.filter(s => s.motivo === filtroMotivo);
-
-  document.getElementById('histCount').textContent = list.length;
-  const tbody = document.getElementById('histTable');
-  if (list.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="9"><div class="empty-state"><div class="icon">📋</div><p>Nenhum registro encontrado</p></div></td></tr>'; return;
-  }
-  tbody.innerHTML = list.map(s => {
-    const ausente = data.professoras.find(p => p.id === s.ausenteId);
-    const sub = data.professoras.find(p => p.id === s.substitutaId);
-    const statusBadge = s.status === 'Confirmada' ? 'badge-success' : s.status === 'Recusada' ? 'badge-danger' : 'badge-warning';
-    const motivoClass = MOTIVO_COLORS[s.motivo] || 'motivo-outro';
-    return `<tr>
-      <td style="white-space:nowrap;font-weight:600">${formatDate(s.dataIni)}</td>
-      <td style="font-weight:600">${ausente ? ausente.nome : '—'}</td>
-      <td><span class="chip">${s.turmaAusente}</span></td>
-      <td><span class="${s.periodoAusente === 'Manhã' ? 'badge badge-morning' : 'badge badge-afternoon'}">${s.periodoAusente}</span></td>
-      <td><span class="badge ${motivoClass}">${s.motivo}</span></td>
-      <td style="text-align:center">${s.dias}</td>
-      <td style="font-weight:600">${sub ? sub.nome : '—'}</td>
-      <td><span class="badge ${statusBadge}">${s.status}</span></td>
-      <td>
-        <div style="display:flex;gap:4px">
-          <button class="btn btn-ghost btn-icon btn-sm" onclick="viewSub('${s.id}')" title="Ver">👁️</button>
-          <button class="btn btn-ghost btn-icon btn-sm" onclick="deleteSub('${s.id}')" title="Excluir">🗑️</button>
-        </div>
-      </td>
-    </tr>`;
+function renderProfs(){
+  var srch=(document.getElementById('pSrch')?document.getElementById('pSrch').value:'').toLowerCase();
+  var list=D.p.slice();
+  if(pTab==='manha') list=list.filter(function(p){return p.periodo==='Manhã';});
+  if(pTab==='tarde') list=list.filter(function(p){return p.periodo==='Tarde';});
+  if(srch) list=list.filter(function(p){return p.nome.toLowerCase().includes(srch)||p.turma.toLowerCase().includes(srch);});
+  list.sort(function(a,b){return a.nome.localeCompare(b.nome);});
+  document.getElementById('pCnt').textContent=D.p.length;
+  var el=document.getElementById('pList');
+  if(!list.length){el.innerHTML='<div class="es"><div class="ei">👩‍🏫</div><p>Nenhuma professora encontrada</p></div>';return;}
+  el.innerHTML=list.map(function(p){
+    var pb=p.periodo==='Manhã'?'<span class="badge bm">🌅 Manhã</span>':'<span class="badge ba">🌇 Tarde</span>';
+    return'<div class="pc"><div class="pav">'+p.nome.charAt(0).toUpperCase()+'</div>'+
+      '<div class="pinf"><div class="pnm">'+p.nome+'</div><div class="pmt">'+p.turma+' '+pb+'</div></div>'+
+      '<div class="ppts">'+p.pts+'<span style="font-size:.63rem;color:var(--t2)"> pts</span></div>'+
+      '<div style="display:flex;gap:4px">'+
+      '<button class="btn bgh bic bsm" onclick="editProf(\''+p.id+'\')" title="Editar">✏️</button>'+
+      '<button class="btn bgh bic bsm" onclick="delProf(\''+p.id+'\')" title="Excluir">🗑️</button>'+
+      '</div></div>';
   }).join('');
 }
-
-function updateSelects() {
-  const fp = document.getElementById('filtroProf');
-  if (fp) {
-    const val = fp.value;
-    fp.innerHTML = '<option value="">Todas</option>' +
-      [...data.professoras].sort((a,b) => a.nome.localeCompare(b.nome)).map(p =>
-        `<option value="${p.id}">${p.nome}</option>`).join('');
-    fp.value = val;
-  }
+function editProf(id){
+  var p=D.p.find(function(x){return x.id===id;}); if(!p) return;
+  document.getElementById('ePId').value=p.id; document.getElementById('pNome').value=p.nome;
+  document.getElementById('pTurma').value=p.turma; document.getElementById('pPer').value=p.periodo;
+  document.getElementById('pPts').value=p.pts; document.getElementById('fPT').textContent='✏️ Editar Professora';
+  document.getElementById('pNome').focus();
+}
+function delProf(id){
+  if(!confirm('Excluir esta professora?')) return;
+  D.p=D.p.filter(function(x){return x.id!==id;}); sv(); renderProfs(); rRank(); rDash(); toast('Professora removida.','warning');
 }
 
-// ========== EXPORT ==========
-function exportCSV() {
-  let csv = 'Data,Ausente,Turma,Período,Motivo,Dias,Substituta,Status,Observações\n';
-  data.substituicoes.forEach(s => {
-    const ausente = data.professoras.find(p => p.id === s.ausenteId);
-    const sub = data.professoras.find(p => p.id === s.substitutaId);
-    csv += `"${formatDate(s.dataIni)}","${ausente?.nome||''}","${s.turmaAusente}","${s.periodoAusente}","${s.motivo}","${s.dias}","${sub?.nome||''}","${s.status}","${s.obs||''}"\n`;
+// HISTÓRICO
+function upFP(){
+  var fp=document.getElementById('fProf'); if(!fp) return;
+  fp.innerHTML='<option value="">Todas</option>'+
+    D.p.slice().sort(function(a,b){return a.nome.localeCompare(b.nome);}).map(function(p){
+      return'<option value="'+p.id+'">'+p.nome+'</option>';}).join('');
+}
+function renderHist(){
+  var list=D.r.slice().sort(function(a,b){return new Date(b.di)-new Date(a.di);});
+  var fp=document.getElementById('fProf'), fpe=document.getElementById('fPer'), fm=document.getElementById('fMot');
+  if(fp&&fp.value) list=list.filter(function(r){return r.aid===fp.value||r.sid===fp.value;});
+  if(fpe&&fpe.value) list=list.filter(function(r){return r.pa===fpe.value;});
+  if(fm&&fm.value) list=list.filter(function(r){return r.mot===fm.value;});
+  document.getElementById('hCnt').textContent=list.length;
+  var tb=document.getElementById('hTable');
+  if(!list.length){tb.innerHTML='<tr><td colspan="9"><div class="es"><div class="ei">📋</div><p>Nenhum registro</p></div></td></tr>';return;}
+  tb.innerHTML=list.map(function(r){
+    var a=D.p.find(function(x){return x.id===r.aid;}); var s=D.p.find(function(x){return x.id===r.sid;});
+    var sc=r.st==='Confirmada'?'bs':r.st==='Recusou'?'bd':'bw'; var mc2=MCSS[r.mot]||'mo3';
+    return'<tr><td style="white-space:nowrap;font-weight:600">'+fD(r.di)+'</td>'+
+      '<td style="font-weight:600">'+(a?a.nome:'—')+'</td>'+
+      '<td><span class="chip">'+r.ta+'</span></td>'+
+      '<td><span class="badge '+(r.pa==='Manhã'?'bm':'ba')+'">'+r.pa+'</span></td>'+
+      '<td><span class="badge '+mc2+'">'+r.mot+'</span></td>'+
+      '<td style="text-align:center">'+r.dias+'</td>'+
+      '<td style="font-weight:600">'+(s?s.nome:'—')+'</td>'+
+      '<td><span class="badge '+sc+'">'+r.st+'</span></td>'+
+      '<td><div style="display:flex;gap:4px">'+
+      '<button class="btn bgh bic bsm" onclick="verReg(\''+r.id+'\')" title="Ver">👁️</button>'+
+      '<button class="btn bgh bic bsm" onclick="excReg(\''+r.id+'\')" title="Excluir">🗑️</button>'+
+      '</div></td></tr>';
+  }).join('');
+}
+function expCSV(){
+  var c='\uFEFFData,Ausente,Turma,Período,Motivo,Dias,Substituta,Status,Observações\n';
+  D.r.forEach(function(r){
+    var a=D.p.find(function(x){return x.id===r.aid;}); var s=D.p.find(function(x){return x.id===r.sid;});
+    c+='"'+fD(r.di)+'","'+(a?a.nome:'')+'","'+r.ta+'","'+r.pa+'","'+r.mot+'","'+r.dias+'","'+(s?s.nome:'')+'","'+r.st+'","'+(r.obs||'')+'"\n';
   });
-  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-  a.download = `substituicoes_${new Date().toISOString().substr(0,10)}.csv`; a.click();
+  var a2=document.createElement('a');
+  a2.href=URL.createObjectURL(new Blob([c],{type:'text/csv;charset=utf-8;'}));
+  a2.download='registros_'+new Date().toISOString().substr(0,10)+'.csv'; a2.click();
   toast('CSV exportado!');
 }
 
-function exportPrint() {
-  window.print();
-}
-
-// ========== UTILS ==========
-function formatDate(str) {
-  if (!str) return '—';
-  const [y,m,d] = str.split('-');
-  return `${d}/${m}/${y}`;
-}
-
-// ========== INIT ==========
-function init() {
-  renderDashboard();
-  renderCalendar();
-  renderTurmasGrid();
-  updateSelects();
-}
-
-function renderTurmasGrid() {}
-
-init();
+// INIT
+rDash(); rCal();
 </script>
 </body>
 </html>
