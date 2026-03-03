@@ -40,14 +40,15 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--tx);m
 .cnav{display:flex;gap:8px}
 .cnav button{background:var(--bg);border:1px solid var(--br);color:var(--p);width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:1rem;font-weight:700;transition:all .2s}
 .cnav button:hover{background:var(--p);color:#fff}
-.cgrid{display:grid;grid-template-columns:repeat(7,1fr);padding:10px;gap:3px}
+.cgrid{display:grid;grid-template-columns:repeat(7,1fr);padding:8px;gap:3px}
 .cdn{text-align:center;font-size:.69rem;font-weight:800;color:var(--t3);text-transform:uppercase;padding:6px 0}
-.cd{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:6px 4px 4px;border-radius:10px;cursor:pointer;transition:all .15s;min-height:48px;border:1.5px solid transparent}
+.cd{display:flex;flex-direction:column;align-items:stretch;padding:5px 3px 4px;border-radius:10px;cursor:pointer;transition:all .15s;min-height:72px;border:1.5px solid transparent;overflow:hidden}
 .cd:hover{background:var(--bg);border-color:var(--pl)}.cd.today{background:var(--p)}.cd.today .dn{color:#fff;font-weight:900}
 .cd.om{opacity:.22;pointer-events:none}.cd.hev{border-color:var(--pl);background:#f0faf7}.cd.sel{border-color:var(--ac)!important;background:var(--wl)!important}
-.dn{font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:700;color:var(--tx)}
-.ddots{display:flex;gap:2px;flex-wrap:wrap;justify-content:center;margin-top:3px}
-.dot{width:6px;height:6px;border-radius:50%}.dot.m{background:var(--mo)}.dot.a{background:var(--af)}
+.dn{font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:700;color:var(--tx);text-align:center;margin-bottom:3px}
+.cd-events{display:flex;flex-direction:column;gap:2px;width:100%}
+.cd-ev{border-radius:4px;padding:1px 3px;font-size:.56rem;font-weight:700;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
+.cd-ev.m{background:var(--ml);color:#c2410c}.cd-ev.a{background:var(--al);color:#4338ca}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px}
 .fr.full{grid-template-columns:1fr}.fr.t3{grid-template-columns:1fr 1fr 1fr}
 .fg{display:flex;flex-direction:column;gap:5px}
@@ -113,7 +114,7 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
 .ni-mt{font-size:.77rem;opacity:.85}
 .es{text-align:center;padding:34px 18px;color:var(--t3)}.es .ei{font-size:2.1rem;margin-bottom:7px}.es p{font-size:.87rem}
 @media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:700px){.g2,.g3,.g4{grid-template-columns:1fr}.fr,.fr.t3{grid-template-columns:1fr}.hnav{gap:4px}.nb span{display:none}.main{padding:13px 10px}}
+@media(max-width:700px){.g2,.g3,.g4{grid-template-columns:1fr}.fr,.fr.t3{grid-template-columns:1fr}.hnav{gap:4px}.nb span{display:none}.main{padding:13px 10px}.cd{min-height:52px}.cd-ev{font-size:.5rem}}
 ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--br);border-radius:10px}
 </style>
 </head>
@@ -121,12 +122,12 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
 <header class="hdr">
   <div class="hi">
     <div class="hico">🏫</div>
-    <div class="htit"><h1>NEIM Elizabeth Regina Aparecida Garcia</h1><p>Controle de Substituições de Professoras</p></div>
+    <div class="htit"><h1>NEIM Elizabeth Regina Aparecida Garcia</h1><p>Controle de Substituições</p></div>
     <nav class="hnav">
       <button class="nb active" id="nav-dashboard" onclick="showSec('dashboard')">📊 <span>Painel</span></button>
       <button class="nb" id="nav-calendario" onclick="showSec('calendario')">📅 <span>Calendário</span></button>
       <button class="nb" id="nav-ranking" onclick="showSec('ranking')">🏆 <span>Fila/Ranking</span></button>
-      <button class="nb" id="nav-professoras" onclick="showSec('professoras')">👩‍🏫 <span>Professoras</span></button>
+      <button class="nb" id="nav-professores" onclick="showSec('professores')">🧑‍🏫 <span>Professores</span></button>
       <button class="nb" id="nav-historico" onclick="showSec('historico')">📋 <span>Histórico</span></button>
     </nav>
   </div>
@@ -145,7 +146,7 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
   </div>
   <div class="g2" style="margin-bottom:20px">
     <div>
-      <div class="ni"><div class="ni-ic">⭐</div><div><h4>Próxima na fila para substituir</h4><div class="ni-nm" id="nxN">Nenhuma professora cadastrada</div><div class="ni-mt" id="nxM"></div></div></div>
+      <div class="ni"><div class="ni-ic">⭐</div><div><h4>Próximo(a) na fila para substituir</h4><div class="ni-nm" id="nxN">Nenhum professor cadastrado</div><div class="ni-mt" id="nxM"></div></div></div>
       <div class="card"><div class="ch"><span>🕐</span><h2>Registros Recentes</h2></div><div id="recList"><div class="es"><div class="ei">📋</div><p>Nenhum registro ainda</p></div></div></div>
     </div>
     <div class="card"><div class="ch"><span>📊</span><h2>Motivos de Ausência — Mês Atual</h2></div><div class="cb" id="motChart"><div class="es"><div class="ei">📊</div><p>Nenhum dado ainda</p></div></div></div>
@@ -155,7 +156,8 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
 
 <!-- CALENDÁRIO -->
 <section class="sec" id="sec-calendario">
-  <div class="stit">Calendário de Registros</div><div class="ssub">Clique em um dia para ver ou registrar uma substituição</div>
+  <div class="stit">Calendário de Registros</div>
+  <div class="ssub">Clique em um dia para ver ou registrar. &nbsp;<span style="background:var(--ml);color:#c2410c;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">🌅 Manhã</span>&nbsp;<span style="background:var(--al);color:#4338ca;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">🌇 Tarde</span></div>
   <div class="g2">
     <div class="cwrap">
       <div class="chd"><h3 id="calT"></h3><div class="cnav"><button onclick="chMon(-1)">‹</button><button onclick="goToday()">Hoje</button><button onclick="chMon(1)">›</button></div></div>
@@ -170,16 +172,16 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
 
 <!-- RANKING -->
 <section class="sec" id="sec-ranking">
-  <div class="stit">Fila de Equidade — Ranking</div><div class="ssub">Menor pontuação = prioridade. Quem recusa é movida para o final automaticamente.</div>
+  <div class="stit">Fila de Equidade — Ranking</div><div class="ssub">Menor pontuação = prioridade. Quem recusa é movido(a) para o final automaticamente.</div>
   <div class="g2" style="margin-bottom:20px">
-    <div class="card"><div class="ch"><span>🌅</span><h2>Fila — Manhã</h2><span style="margin-left:auto;font-size:.73rem;color:var(--t2)">↓ prioridade</span></div><div id="rkM"><div class="es"><div class="ei">👩‍🏫</div><p>Cadastre professoras</p></div></div></div>
-    <div class="card"><div class="ch"><span>🌇</span><h2>Fila — Tarde</h2><span style="margin-left:auto;font-size:.73rem;color:var(--t2)">↓ prioridade</span></div><div id="rkT"><div class="es"><div class="ei">👩‍🏫</div><p>Cadastre professoras</p></div></div></div>
+    <div class="card"><div class="ch"><span>🌅</span><h2>Fila — Manhã</h2><span style="margin-left:auto;font-size:.73rem;color:var(--t2)">↓ prioridade</span></div><div id="rkM"><div class="es"><div class="ei">🧑‍🏫</div><p>Cadastre professores</p></div></div></div>
+    <div class="card"><div class="ch"><span>🌇</span><h2>Fila — Tarde</h2><span style="margin-left:auto;font-size:.73rem;color:var(--t2)">↓ prioridade</span></div><div id="rkT"><div class="es"><div class="ei">🧑‍🏫</div><p>Cadastre professores</p></div></div></div>
   </div>
   <div class="card"><div class="ch"><span>✏️</span><h2>Ajuste Manual de Pontuação</h2></div>
     <div class="cb">
       <div class="al ai">ℹ️ Ajuste manual de pontos. O sistema atualiza automaticamente ao confirmar ou registrar recusa.</div>
       <div class="fr t3">
-        <div class="fg"><label>Professora</label><select id="ajPr"><option value="">Selecione...</option></select></div>
+        <div class="fg"><label>Professor(a)</label><select id="ajPr"><option value="">Selecione...</option></select></div>
         <div class="fg"><label>Operação</label><select id="ajOp"><option value="set">Definir valor</option><option value="add">Adicionar</option><option value="sub">Subtrair</option></select></div>
         <div class="fg"><label>Pontos</label><input type="number" id="ajPts" min="0" value="1"></div>
       </div>
@@ -188,11 +190,11 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
   </div>
 </section>
 
-<!-- PROFESSORAS -->
-<section class="sec" id="sec-professoras">
-  <div class="stit">Gestão de Professoras</div><div class="ssub">Cadastre e gerencie as professoras da creche</div>
+<!-- PROFESSORES -->
+<section class="sec" id="sec-professores">
+  <div class="stit">Gestão de Professores</div><div class="ssub">Cadastre e gerencie os professores da creche</div>
   <div class="g2">
-    <div class="card"><div class="ch"><span>➕</span><h2 id="fPT">Nova Professora</h2></div>
+    <div class="card"><div class="ch"><span>➕</span><h2 id="fPT">Novo(a) Professor(a)</h2></div>
       <div class="cb">
         <input type="hidden" id="ePId">
         <div class="fr">
@@ -209,14 +211,14 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
         </div>
       </div>
     </div>
-    <div class="card"><div class="ch"><span>👩‍🏫</span><h2>Professoras Cadastradas</h2><span class="badge bin" style="margin-left:auto" id="pCnt">0</span></div>
+    <div class="card"><div class="ch"><span>🧑‍🏫</span><h2>Professores Cadastrados</h2><span class="badge bin" style="margin-left:auto" id="pCnt">0</span></div>
       <div class="cb" style="padding-top:12px">
         <div class="tabs">
-          <button class="tb active" onclick="setPTab('todas',this)">Todas</button>
+          <button class="tb active" onclick="setPTab('todas',this)">Todos</button>
           <button class="tb" onclick="setPTab('manha',this)">🌅 Manhã</button>
           <button class="tb" onclick="setPTab('tarde',this)">🌇 Tarde</button>
         </div>
-        <div class="sb2"><input type="text" id="pSrch" placeholder="Buscar professora..." oninput="renderProfs()"></div>
+        <div class="sb2"><input type="text" id="pSrch" placeholder="Buscar professor..." oninput="renderProfs()"></div>
         <div id="pList" style="max-height:350px;overflow-y:auto;display:flex;flex-direction:column;gap:7px"></div>
       </div>
     </div>
@@ -228,7 +230,7 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
   <div class="stit">Histórico de Registros</div><div class="ssub">Consulte, filtre e exporte todos os registros de substituição</div>
   <div class="card" style="margin-bottom:17px"><div class="cb">
     <div class="fr t3" style="margin-bottom:0">
-      <div class="fg"><label>Professora</label><select id="fProf" onchange="renderHist()"><option value="">Todas</option></select></div>
+      <div class="fg"><label>Professor(a)</label><select id="fProf" onchange="renderHist()"><option value="">Todos</option></select></div>
       <div class="fg"><label>Período</label><select id="fPer" onchange="renderHist()"><option value="">Todos</option><option value="Manhã">Manhã</option><option value="Tarde">Tarde</option></select></div>
       <div class="fg"><label>Motivo</label><select id="fMot" onchange="renderHist()"><option value="">Todos</option><option>Abonada</option><option>Licença Médica (CLM)</option><option>Licença Maternidade</option><option>Licença Gala</option><option>Licença Nojo</option><option>Outro</option></select></div>
     </div>
@@ -240,7 +242,7 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
     </div>
   </div>
   <div class="tw"><table>
-    <thead><tr><th>Data</th><th>Professora Ausente</th><th>Turma</th><th>Período</th><th>Motivo</th><th>Dias</th><th>Substituta</th><th>Status</th><th></th></tr></thead>
+    <thead><tr><th>Data</th><th>Prof. Ausente</th><th>Turma</th><th>Período</th><th>Motivo</th><th>Dias</th><th>Substituto(a)</th><th>Status</th><th></th></tr></thead>
     <tbody id="hTable"><tr><td colspan="9"><div class="es"><div class="ei">📋</div><p>Nenhum registro</p></div></td></tr></tbody>
   </table></div></div>
 </section>
@@ -253,11 +255,11 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
     <div class="mb2">
       <div class="al ai" id="mAlert" style="display:none"></div>
       <div class="fr">
-        <div class="fg"><label>Professora Ausente *</label><select id="sAus" onchange="onAus()"><option value="">Selecione...</option></select></div>
+        <div class="fg"><label>Professor(a) Ausente *</label><select id="sAus" onchange="onAus()"><option value="">Selecione...</option></select></div>
         <div class="fg"><label>Turma</label><input type="text" id="sTurma" readonly style="background:#f9fafb"></div>
       </div>
       <div class="fr">
-        <div class="fg"><label>Período da Ausente</label><input type="text" id="sPer" readonly style="background:#f9fafb"></div>
+        <div class="fg"><label>Período do Ausente</label><input type="text" id="sPer" readonly style="background:#f9fafb"></div>
         <div class="fg"><label>Motivo *</label><select id="sMot"><option value="">Selecione...</option><option>Abonada</option><option>Licença Médica (CLM)</option><option>Licença Maternidade</option><option>Licença Gala</option><option>Licença Nojo</option><option>Outro</option></select></div>
       </div>
       <div class="fr">
@@ -267,7 +269,7 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
       <hr class="dvd">
       <div id="sInd" style="display:none"><div class="al as2" id="sIndA"></div></div>
       <div class="fr">
-        <div class="fg"><label>Professora Substituta *</label><select id="sSub"><option value="">Selecione...</option></select></div>
+        <div class="fg"><label>Professor(a) Substituto(a) *</label><select id="sSub"><option value="">Selecione...</option></select></div>
         <div class="fg"><label>Status *</label><select id="sSt"><option value="Confirmada">✅ Confirmada</option><option value="Recusou">🚫 Recusou</option><option value="Pendente">⏳ Pendente</option></select></div>
       </div>
       <div class="fr full"><div class="fg"><label>Observações</label><textarea id="sObs" rows="2" placeholder="Observações adicionais..."></textarea></div></div>
@@ -286,15 +288,16 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
 </div>
 
 <script>
-var D = JSON.parse(localStorage.getItem('neim4') || '{"p":[],"r":[]}');
+var D = JSON.parse(localStorage.getItem('neim5') || '{"p":[],"r":[]}');
 var cMon = new Date().getMonth(), cYr = new Date().getFullYear(), selDate = null, editId = null, pTab = 'todas';
 var TUR = {'Berçário II A':'i','Berçário II B':'i','Maternal I A':'i','Maternal I B':'i','Maternal I C':'i','Maternal I D':'i','Maternal II A':'m','Maternal II B':'m','Maternal II C':'t','Maternal II D':'t'};
 var MCSS = {'Abonada':'ma','Licença Médica (CLM)':'mc3','Licença Maternidade':'mm','Licença Gala':'mg','Licença Nojo':'mn','Outro':'mo3'};
 
-function sv() { localStorage.setItem('neim4', JSON.stringify(D)); }
+function sv() { localStorage.setItem('neim5', JSON.stringify(D)); }
 function gId() { return Date.now().toString(36) + Math.random().toString(36).substr(2,5); }
 function fD(s) { if(!s) return '—'; var p = s.split('-'); return p[2]+'/'+p[1]+'/'+p[0]; }
 function opp(p) { return p === 'Manhã' ? 'Tarde' : 'Manhã'; }
+function prim(id) { var p = D.p.find(function(x){return x.id===id;}); return p ? p.nome.split(' ')[0] : '?'; }
 
 function showSec(id) {
   document.querySelectorAll('.sec').forEach(function(s){ s.classList.remove('active'); });
@@ -304,7 +307,7 @@ function showSec(id) {
   if(id==='dashboard') rDash();
   else if(id==='calendario') rCal();
   else if(id==='ranking') rRank();
-  else if(id==='professoras') renderProfs();
+  else if(id==='professores') renderProfs();
   else if(id==='historico') { upFP(); renderHist(); }
 }
 
@@ -321,11 +324,9 @@ function closeMo(id) { document.getElementById(id).classList.remove('open'); }
 function getElig(aid) {
   var a = D.p.find(function(x){ return x.id===aid; });
   if(!a) return [];
-  var op = opp(a.periodo);
-  return D.p.filter(function(x){ return x.id!==aid && x.periodo===op; }).sort(function(a,b){ return a.pts-b.pts; });
+  return D.p.filter(function(x){ return x.id!==aid && x.periodo===opp(a.periodo); }).sort(function(a,b){ return a.pts-b.pts; });
 }
 
-// DASHBOARD
 function rDash() {
   var now = new Date(), mes = now.getMonth(), ano = now.getFullYear();
   var rm = D.r.filter(function(r){ var d=new Date(r.di+'T12:00:00'); return d.getMonth()===mes && d.getFullYear()===ano; });
@@ -333,88 +334,96 @@ function rDash() {
   document.getElementById('s-manha').textContent = rm.filter(function(r){ return r.pa==='Manhã'; }).length;
   document.getElementById('s-tarde').textContent = rm.filter(function(r){ return r.pa==='Tarde'; }).length;
   document.getElementById('s-rec').textContent = D.r.filter(function(r){ return r.st==='Recusou'; }).length;
-  var pm = D.p.filter(function(x){ return x.periodo==='Manhã'; }).sort(function(a,b){ return a.pts-b.pts; })[0];
-  var pt = D.p.filter(function(x){ return x.periodo==='Tarde'; }).sort(function(a,b){ return a.pts-b.pts; })[0];
-  var px = pm || pt;
-  if(px){ document.getElementById('nxN').textContent = px.nome; document.getElementById('nxM').textContent = px.turma+' — '+px.periodo+' — '+px.pts+' pt(s)'; }
-  else { document.getElementById('nxN').textContent = 'Nenhuma professora cadastrada'; document.getElementById('nxM').textContent = ''; }
+  var px = D.p.filter(function(x){ return x.periodo==='Manhã'; }).sort(function(a,b){ return a.pts-b.pts; })[0] ||
+           D.p.filter(function(x){ return x.periodo==='Tarde'; }).sort(function(a,b){ return a.pts-b.pts; })[0];
+  if(px){ document.getElementById('nxN').textContent=px.nome; document.getElementById('nxM').textContent=px.turma+' — '+px.periodo+' — '+px.pts+' pt(s)'; }
+  else { document.getElementById('nxN').textContent='Nenhum professor cadastrado'; document.getElementById('nxM').textContent=''; }
   var rec = D.r.slice().sort(function(a,b){ return new Date(b.di)-new Date(a.di); }).slice(0,5);
   var rl = document.getElementById('recList');
   if(!rec.length){ rl.innerHTML='<div class="es"><div class="ei">📋</div><p>Nenhum registro ainda</p></div>'; }
-  else {
-    rl.innerHTML = rec.map(function(r){
-      var a=D.p.find(function(x){return x.id===r.aid;}); var s=D.p.find(function(x){return x.id===r.sid;});
-      var sc=r.st==='Confirmada'?'bs':r.st==='Recusou'?'bd':'bw';
-      return '<div class="rr" onclick="verReg(\''+r.id+'\')" style="cursor:pointer">'+
-        '<div style="flex:1"><div style="font-weight:700;font-size:.87rem">'+(a?a.nome:'—')+'</div>'+
-        '<div style="font-size:.73rem;color:var(--t2)">'+r.ta+' • '+fD(r.di)+' • '+r.dias+' dia(s)</div></div>'+
-        '<div style="text-align:right"><div style="font-size:.75rem;color:var(--t2);margin-bottom:3px">'+(s?'→ '+s.nome.split(' ')[0]:'—')+'</div>'+
-        '<span class="badge '+sc+'">'+r.st+'</span></div></div>';
-    }).join('');
-  }
+  else { rl.innerHTML = rec.map(function(r){
+    var a=D.p.find(function(x){return x.id===r.aid;}); var s=D.p.find(function(x){return x.id===r.sid;});
+    var sc=r.st==='Confirmada'?'bs':r.st==='Recusou'?'bd':'bw';
+    return '<div class="rr" onclick="verReg(\''+r.id+'\')" style="cursor:pointer">'+
+      '<div style="flex:1"><div style="font-weight:700;font-size:.87rem">'+(a?a.nome:'—')+'</div>'+
+      '<div style="font-size:.73rem;color:var(--t2)">'+r.ta+' • '+fD(r.di)+' • '+r.dias+' dia(s)</div></div>'+
+      '<div style="text-align:right"><div style="font-size:.75rem;color:var(--t2);margin-bottom:3px">'+(s?'→ '+s.nome.split(' ')[0]:'—')+'</div>'+
+      '<span class="badge '+sc+'">'+r.st+'</span></div></div>';
+  }).join(''); }
   var mo = {}; rm.forEach(function(r){ mo[r.mot]=(mo[r.mot]||0)+1; });
   var mc = document.getElementById('motChart');
   if(!Object.keys(mo).length){ mc.innerHTML='<div class="es"><div class="ei">📊</div><p>Nenhum dado ainda</p></div>'; }
-  else {
-    var mx = Math.max.apply(null, Object.values(mo));
-    mc.innerHTML = Object.entries(mo).sort(function(a,b){return b[1]-a[1];}).map(function(e){
+  else { var mx=Math.max.apply(null,Object.values(mo));
+    mc.innerHTML=Object.entries(mo).sort(function(a,b){return b[1]-a[1];}).map(function(e){
       return '<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;margin-bottom:4px">'+
         '<span style="font-size:.81rem;font-weight:700">'+e[0]+'</span><span style="font-size:.81rem;color:var(--p);font-weight:800">'+e[1]+'</span></div>'+
-        '<div class="rbar"><div class="rbf" style="width:'+(e[1]/mx*100)+'%"></div></div></div>';
-    }).join('');
-  }
-  var tg = document.getElementById('turGrid');
-  tg.innerHTML = Object.keys(TUR).map(function(t){
-    var ti=TUR[t]; var bg=ti==='i'?'<span class="badge bi2">⏰ Integral</span>':ti==='m'?'<span class="badge bm">🌅 Manhã</span>':'<span class="badge ba">🌇 Tarde</span>';
-    var ps = D.p.filter(function(x){return x.turma===t;});
+        '<div class="rbar"><div class="rbf" style="width:'+(e[1]/mx*100)+'%"></div></div></div>';}).join(''); }
+  document.getElementById('turGrid').innerHTML=Object.keys(TUR).map(function(t){
+    var ti=TUR[t],bg=ti==='i'?'<span class="badge bi2">⏰ Integral</span>':ti==='m'?'<span class="badge bm">🌅 Manhã</span>':'<span class="badge ba">🌇 Tarde</span>';
+    var ps=D.p.filter(function(x){return x.turma===t;});
     return '<div style="background:var(--bg);border-radius:10px;padding:11px 13px;border:1px solid var(--br)">'+
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">'+
       '<span style="font-family:\'Nunito\',sans-serif;font-weight:800;font-size:.86rem">'+t+'</span>'+bg+'</div>'+
-      (ps.length ? ps.map(function(p){return '<div style="font-size:.78rem;color:var(--t2);padding:2px 0">👩‍🏫 '+p.nome+'</div>';}).join('') :
-        '<div style="font-size:.76rem;color:var(--t3)">Sem professora</div>')+'</div>';
+      (ps.length?ps.map(function(p){return'<div style="font-size:.78rem;color:var(--t2);padding:2px 0">🧑‍🏫 '+p.nome+'</div>';}).join(''):
+        '<div style="font-size:.76rem;color:var(--t3)">Sem professor</div>')+'</div>';
   }).join('');
 }
 
-// CALENDÁRIO
+// CALENDÁRIO com nomes
 function rCal() {
   var mns=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-  document.getElementById('calT').textContent = mns[cMon]+' '+cYr;
+  document.getElementById('calT').textContent=mns[cMon]+' '+cYr;
   var fd=new Date(cYr,cMon,1).getDay(), dim=new Date(cYr,cMon+1,0).getDate(), td=new Date();
   var h=(['Dom','Seg','Ter','Qua','Qui','Sex','Sáb']).map(function(d){return'<div class="cdn">'+d+'</div>';}).join('');
   for(var i=0;i<fd;i++) h+='<div class="cd om"></div>';
   for(var d=1;d<=dim;d++){
     var ds=cYr+'-'+String(cMon+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
-    var sbs=D.r.filter(function(r){var ini=new Date(r.di+'T12:00:00');var fim=new Date(ini);fim.setDate(fim.getDate()+r.dias-1);var c=new Date(ds+'T12:00:00');return c>=ini&&c<=fim;});
-    var iT=d===td.getDate()&&cMon===td.getMonth()&&cYr===td.getFullYear();
-    var iS=selDate===ds;
-    var hM=sbs.some(function(r){return r.pa==='Manhã';}); var hA=sbs.some(function(r){return r.pa==='Tarde';});
+    var sbs=D.r.filter(function(r){
+      var ini=new Date(r.di+'T12:00:00'),fim=new Date(ini); fim.setDate(fim.getDate()+r.dias-1);
+      var c=new Date(ds+'T12:00:00'); return c>=ini&&c<=fim;
+    });
+    var iT=d===td.getDate()&&cMon===td.getMonth()&&cYr===td.getFullYear(), iS=selDate===ds;
+    var evHtml='';
+    if(sbs.length){
+      evHtml='<div class="cd-events">';
+      sbs.slice(0,2).forEach(function(r){
+        var cls=r.pa==='Manhã'?'m':'a';
+        var txt=prim(r.aid)+' → '+prim(r.sid);
+        evHtml+='<div class="cd-ev '+cls+'" title="'+txt+'">'+txt+'</div>';
+      });
+      if(sbs.length>2) evHtml+='<div style="font-size:.52rem;color:var(--t2);text-align:center;padding:1px">+' +(sbs.length-2)+' mais</div>';
+      evHtml+='</div>';
+    }
     h+='<div class="cd'+(iT?' today':'')+(sbs.length?' hev':'')+(iS?' sel':'')+'" onclick="selD(\''+ds+'\')">'+
-      '<div class="dn">'+d+'</div><div class="ddots">'+
-      (hM?'<div class="dot m"></div>':'')+(hA?'<div class="dot a"></div>':'')+
-      '</div></div>';
+      '<div class="dn" style="'+(iT?'color:#fff':'')+'">'+d+'</div>'+evHtml+'</div>';
   }
-  document.getElementById('calG').innerHTML = h;
+  document.getElementById('calG').innerHTML=h;
   if(selDate) rDay(selDate);
 }
+
 function chMon(d){ cMon+=d; if(cMon>11){cMon=0;cYr++;} if(cMon<0){cMon=11;cYr--;} rCal(); }
 function goToday(){ var n=new Date(); cMon=n.getMonth(); cYr=n.getFullYear(); rCal(); }
 function selD(ds){ selDate=ds; document.getElementById('addBtn').style.display=''; rCal(); rDay(ds); }
 
 function rDay(ds) {
-  document.getElementById('dayT').textContent = '📅 '+fD(ds);
-  var sbs=D.r.filter(function(r){var ini=new Date(r.di+'T12:00:00');var fim=new Date(ini);fim.setDate(fim.getDate()+r.dias-1);var c=new Date(ds+'T12:00:00');return c>=ini&&c<=fim;});
+  document.getElementById('dayT').textContent='📅 '+fD(ds);
+  var sbs=D.r.filter(function(r){
+    var ini=new Date(r.di+'T12:00:00'),fim=new Date(ini); fim.setDate(fim.getDate()+r.dias-1);
+    var c=new Date(ds+'T12:00:00'); return c>=ini&&c<=fim;
+  });
   var dl=document.getElementById('dayList');
   if(!sbs.length){
     dl.innerHTML='<div class="es"><div class="ei">✅</div><p>Nenhuma substituição neste dia</p><button class="btn bp bsm" style="margin-top:10px" onclick="openSubModal()">+ Novo Registro</button></div>';
     return;
   }
-  dl.innerHTML = sbs.map(function(r){
-    var a=D.p.find(function(x){return x.id===r.aid;}); var s=D.p.find(function(x){return x.id===r.sid;});
+  dl.innerHTML=sbs.map(function(r){
+    var a=D.p.find(function(x){return x.id===r.aid;}), s=D.p.find(function(x){return x.id===r.sid;});
     var sc=r.st==='Confirmada'?'bs':r.st==='Recusou'?'bd':'bw';
     return '<div class="rr" style="cursor:pointer" onclick="verReg(\''+r.id+'\')">'+
-      '<div style="flex:1"><div style="font-weight:700">'+(a?a.nome:'—')+'</div>'+
-      '<div style="font-size:.73rem;color:var(--t2)">'+r.ta+' • '+r.mot+'</div>'+
-      '<div style="font-size:.73rem;color:var(--t2);margin-top:2px">→ '+(s?s.nome:'—')+'</div></div>'+
+      '<div style="flex:1">'+
+      '<div style="font-weight:700;font-size:.9rem">'+(a?a.nome:'—')+
+      ' <span style="color:var(--t3);font-size:.8rem">→</span> '+(s?s.nome:'—')+'</div>'+
+      '<div style="font-size:.73rem;color:var(--t2);margin-top:2px">'+r.ta+' • '+r.mot+' • '+r.dias+' dia(s)</div></div>'+
       '<div style="text-align:right;display:flex;flex-direction:column;gap:4px;align-items:flex-end">'+
       '<span class="badge '+(r.pa==='Manhã'?'bm':'ba')+'">'+r.pa+'</span>'+
       '<span class="badge '+sc+'">'+r.st+'</span></div></div>';
@@ -429,19 +438,15 @@ function openSubModal(){
   document.getElementById('sDias').value=1; document.getElementById('sSt').value='Confirmada';
   document.getElementById('sInd').style.display='none'; document.getElementById('mAlert').style.display='none';
   document.getElementById('sSub').innerHTML='<option value="">Selecione...</option>';
-  var sel=document.getElementById('sAus');
-  sel.innerHTML='<option value="">Selecione...</option>'+
+  document.getElementById('sAus').innerHTML='<option value="">Selecione...</option>'+
     D.p.slice().sort(function(a,b){return a.nome.localeCompare(b.nome);}).map(function(p){
-      return'<option value="'+p.id+'">'+p.nome+' — '+p.turma+' ('+p.periodo+')</option>';
-    }).join('');
+      return'<option value="'+p.id+'">'+p.nome+' — '+p.turma+' ('+p.periodo+')</option>';}).join('');
   openMo('mSub');
 }
 
 function onAus(){
-  var id=document.getElementById('sAus').value;
-  var p=D.p.find(function(x){return x.id===id;}); if(!p) return;
-  document.getElementById('sTurma').value=p.turma;
-  document.getElementById('sPer').value=p.periodo;
+  var id=document.getElementById('sAus').value, p=D.p.find(function(x){return x.id===id;}); if(!p) return;
+  document.getElementById('sTurma').value=p.turma; document.getElementById('sPer').value=p.periodo;
   var el=getElig(id);
   document.getElementById('sSub').innerHTML='<option value="">Selecione...</option>'+
     el.map(function(x){return'<option value="'+x.id+'">'+x.nome+' — '+x.turma+' ('+x.periodo+') — '+x.pts+' pts</option>';}).join('');
@@ -449,9 +454,9 @@ function onAus(){
     document.getElementById('sInd').style.display='block';
     document.getElementById('sIndA').innerHTML='⭐ <strong>Indicação automática da fila:</strong> '+el[0].nome+' ('+el[0].pts+' pts) — '+el[0].periodo;
     document.getElementById('sSub').value=el[0].id;
-  } else { document.getElementById('sInd').style.display='none'; }
+  } else document.getElementById('sInd').style.display='none';
   var al=document.getElementById('mAlert'); al.style.display='block'; al.className='al ai';
-  al.innerHTML='ℹ️ '+p.nome+' é do período <strong>'+p.periodo+'</strong>. A substituta deve ser do período <strong>'+opp(p.periodo)+'</strong>.';
+  al.innerHTML='ℹ️ '+p.nome+' é do período <strong>'+p.periodo+'</strong>. O(A) substituto(a) deve ser do período <strong>'+opp(p.periodo)+'</strong>.';
 }
 
 function salvarReg(){
@@ -460,32 +465,29 @@ function salvarReg(){
     sid=document.getElementById('sSub').value, st=document.getElementById('sSt').value,
     obs=document.getElementById('sObs').value;
   if(!aid||!mot||!di||!dias||!sid){ toast('Preencha todos os campos obrigatórios!','error'); return; }
-  var a=D.p.find(function(x){return x.id===aid;}); var s=D.p.find(function(x){return x.id===sid;});
-  if(a&&s&&a.periodo===s.periodo){ toast('A substituta deve ser do período oposto!','error'); return; }
-  var id=editId||gId();
-  var reg={id:id,aid:aid,ta:a?a.turma:'',pa:a?a.periodo:'',mot:mot,di:di,dias:parseInt(dias),sid:sid,st:st,obs:obs,cr:new Date().toISOString()};
-  if(editId){ var i=D.r.findIndex(function(r){return r.id===editId;}); D.r[i]=reg; }
-  else D.r.push(reg);
+  var a=D.p.find(function(x){return x.id===aid;}), s=D.p.find(function(x){return x.id===sid;});
+  if(a&&s&&a.periodo===s.periodo){ toast('O(A) substituto(a) deve ser do período oposto!','error'); return; }
+  var reg={id:editId||gId(),aid:aid,ta:a?a.turma:'',pa:a?a.periodo:'',mot:mot,di:di,dias:parseInt(dias),sid:sid,st:st,obs:obs,cr:new Date().toISOString()};
+  if(editId){ var i=D.r.findIndex(function(r){return r.id===editId;}); D.r[i]=reg; } else D.r.push(reg);
   if(st==='Confirmada'&&s) s.pts+=parseInt(dias);
-  else if(st==='Recusou'&&s){ var mx=0; D.p.forEach(function(x){if(x.pts>mx)mx=x.pts;}); s.pts=mx+100; toast('Professora recusou — movida para o final da fila!','warning'); }
+  else if(st==='Recusou'&&s){ var mx=0; D.p.forEach(function(x){if(x.pts>mx)mx=x.pts;}); s.pts=mx+100; toast('Professor(a) recusou — movido(a) para o final da fila!','warning'); }
   sv(); closeMo('mSub'); toast('Registro salvo!'); rCal(); rDash(); rRank();
 }
 
 function verReg(id){
   var r=D.r.find(function(x){return x.id===id;}); if(!r) return;
-  var a=D.p.find(function(x){return x.id===r.aid;}); var s=D.p.find(function(x){return x.id===r.sid;});
-  var sc=r.st==='Confirmada'?'bs':r.st==='Recusou'?'bd':'bw'; var mc2=MCSS[r.mot]||'mo3';
+  var a=D.p.find(function(x){return x.id===r.aid;}), s=D.p.find(function(x){return x.id===r.sid;});
+  var sc=r.st==='Confirmada'?'bs':r.st==='Recusou'?'bd':'bw', mc2=MCSS[r.mot]||'mo3';
   document.getElementById('mVBody').innerHTML=
-    '<div class="fr"><div><div style="font-size:.71rem;font-weight:800;color:var(--t2);text-transform:uppercase;margin-bottom:4px">Professora Ausente</div>'+
+    '<div class="fr"><div><div style="font-size:.71rem;font-weight:800;color:var(--t2);text-transform:uppercase;margin-bottom:4px">Professor(a) Ausente</div>'+
     '<div style="font-weight:700">'+(a?a.nome:'—')+'</div></div>'+
     '<div><div style="font-size:.71rem;font-weight:800;color:var(--t2);text-transform:uppercase;margin-bottom:4px">Turma / Período</div>'+
     '<div>'+r.ta+' — '+r.pa+'</div></div></div>'+
     '<div class="fr"><div><div style="font-size:.71rem;font-weight:800;color:var(--t2);text-transform:uppercase;margin-bottom:4px">Motivo</div>'+
     '<span class="badge '+mc2+'">'+r.mot+'</span></div>'+
     '<div><div style="font-size:.71rem;font-weight:800;color:var(--t2);text-transform:uppercase;margin-bottom:4px">Afastamento</div>'+
-    '<div>'+fD(r.di)+' — '+r.dias+' dia(s)</div></div></div>'+
-    '<hr class="dvd">'+
-    '<div class="fr"><div><div style="font-size:.71rem;font-weight:800;color:var(--t2);text-transform:uppercase;margin-bottom:4px">Substituta</div>'+
+    '<div>'+fD(r.di)+' — '+r.dias+' dia(s)</div></div></div><hr class="dvd">'+
+    '<div class="fr"><div><div style="font-size:.71rem;font-weight:800;color:var(--t2);text-transform:uppercase;margin-bottom:4px">Substituto(a)</div>'+
     '<div style="font-weight:700">'+(s?s.nome:'—')+'</div>'+(s?'<div style="font-size:.74rem;color:var(--t2)">'+s.turma+' — '+s.periodo+'</div>':'')+
     '</div><div><div style="font-size:.71rem;font-weight:800;color:var(--t2);text-transform:uppercase;margin-bottom:4px">Status</div>'+
     '<span class="badge '+sc+'">'+r.st+'</span></div></div>'+
@@ -495,39 +497,36 @@ function verReg(id){
 }
 function excReg(id){ D.r=D.r.filter(function(r){return r.id!==id;}); sv(); toast('Registro excluído.','warning'); rCal(); rDash(); rRank(); renderHist(); }
 
-// RANKING
 function rRank(){
-  var mh=D.p.filter(function(x){return x.periodo==='Manhã';}).sort(function(a,b){return a.pts-b.pts;});
-  var td2=D.p.filter(function(x){return x.periodo==='Tarde';}).sort(function(a,b){return a.pts-b.pts;});
   function bld(list,elId){
     var el=document.getElementById(elId);
-    if(!list.length){el.innerHTML='<div class="es"><div class="ei">👩‍🏫</div><p>Nenhuma professora cadastrada</p></div>';return;}
+    if(!list.length){el.innerHTML='<div class="es"><div class="ei">🧑‍🏫</div><p>Nenhum professor cadastrado</p></div>';return;}
     var mx=Math.max.apply(null,list.map(function(x){return x.pts;}))||1;
     el.innerHTML=list.map(function(p,i){
-      var rc=i===0?'r1':i===1?'r2':i===2?'r3':'ro'; var em=i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1);
+      var rc=i===0?'r1':i===1?'r2':i===2?'r3':'ro', em=i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1);
       return '<div class="rr"><div class="rn '+rc+'">'+em+'</div>'+
         '<div style="flex:1;min-width:0"><div style="font-weight:700;font-size:.89rem">'+p.nome+'</div>'+
         '<div style="font-size:.74rem;color:var(--t2)">'+p.turma+'</div>'+
-        '<div class="rbar"><div class="rbf" style="width:'+(mx>0?p.pts/mx*100:0)+'%"></div></div></div>'+
+        '<div class="rbar"><div class="rbf" style="width:'+(p.pts/mx*100)+'%"></div></div></div>'+
         '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">'+
         '<div style="font-family:\'Nunito\',sans-serif;font-weight:900;font-size:1rem;color:var(--p)">'+p.pts+' pts</div>'+
-        (i===0?'<span class="nbdg">PRÓXIMA</span>':'')+'</div></div>';
+        (i===0?'<span class="nbdg">PRÓXIMO(A)</span>':'')+'</div></div>';
     }).join('');
   }
-  bld(mh,'rkM'); bld(td2,'rkT');
+  bld(D.p.filter(function(x){return x.periodo==='Manhã';}).sort(function(a,b){return a.pts-b.pts;}),'rkM');
+  bld(D.p.filter(function(x){return x.periodo==='Tarde';}).sort(function(a,b){return a.pts-b.pts;}),'rkT');
   document.getElementById('ajPr').innerHTML='<option value="">Selecione...</option>'+
     D.p.slice().sort(function(a,b){return a.nome.localeCompare(b.nome);}).map(function(p){
       return'<option value="'+p.id+'">'+p.nome+' ('+p.pts+' pts)</option>';}).join('');
 }
 function ajustarPts(){
   var id=document.getElementById('ajPr').value, op=document.getElementById('ajOp').value, pts=parseInt(document.getElementById('ajPts').value);
-  if(!id||isNaN(pts)){toast('Selecione uma professora e informe os pontos!','error');return;}
+  if(!id||isNaN(pts)){toast('Selecione um professor e informe os pontos!','error');return;}
   var p=D.p.find(function(x){return x.id===id;}); if(!p) return;
   if(op==='set') p.pts=pts; else if(op==='add') p.pts+=pts; else p.pts=Math.max(0,p.pts-pts);
   sv(); rRank(); toast('Pontuação de '+p.nome.split(' ')[0]+' atualizada para '+p.pts+' pts!');
 }
 
-// PROFESSORAS
 function salvarProf(){
   var nome=document.getElementById('pNome').value.trim(), turma=document.getElementById('pTurma').value,
     per=document.getElementById('pPer').value, pts=parseInt(document.getElementById('pPts').value)||0,
@@ -538,16 +537,15 @@ function salvarProf(){
   if(tt==='t'&&per!=='Tarde'){toast(turma+' é uma turma de Tarde!','error');return;}
   if(eid){var p=D.p.find(function(x){return x.id===eid;});if(p){p.nome=nome;p.turma=turma;p.periodo=per;p.pts=pts;}}
   else D.p.push({id:gId(),nome:nome,turma:turma,periodo:per,pts:pts});
-  sv(); cancelProf(); renderProfs(); rRank(); rDash(); toast(eid?'Professora atualizada!':'Professora cadastrada!');
+  sv(); cancelProf(); renderProfs(); rRank(); rDash(); toast(eid?'Professor(a) atualizado(a)!':'Professor(a) cadastrado(a)!');
 }
 function cancelProf(){
-  document.getElementById('ePId').value=''; document.getElementById('pNome').value='';
-  document.getElementById('pTurma').value=''; document.getElementById('pPer').value='';
-  document.getElementById('pPts').value=0; document.getElementById('fPT').textContent='Nova Professora';
+  ['ePId','pNome','pTurma','pPer'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('pPts').value=0; document.getElementById('fPT').textContent='Novo(a) Professor(a)';
 }
 function setPTab(tab,btn){
   pTab=tab;
-  document.querySelectorAll('#sec-professoras .tb').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('#sec-professores .tb').forEach(function(b){b.classList.remove('active');});
   btn.classList.add('active'); renderProfs();
 }
 function renderProfs(){
@@ -559,7 +557,7 @@ function renderProfs(){
   list.sort(function(a,b){return a.nome.localeCompare(b.nome);});
   document.getElementById('pCnt').textContent=D.p.length;
   var el=document.getElementById('pList');
-  if(!list.length){el.innerHTML='<div class="es"><div class="ei">👩‍🏫</div><p>Nenhuma professora encontrada</p></div>';return;}
+  if(!list.length){el.innerHTML='<div class="es"><div class="ei">🧑‍🏫</div><p>Nenhum professor encontrado</p></div>';return;}
   el.innerHTML=list.map(function(p){
     var pb=p.periodo==='Manhã'?'<span class="badge bm">🌅 Manhã</span>':'<span class="badge ba">🌇 Tarde</span>';
     return'<div class="pc"><div class="pav">'+p.nome.charAt(0).toUpperCase()+'</div>'+
@@ -575,18 +573,17 @@ function editProf(id){
   var p=D.p.find(function(x){return x.id===id;}); if(!p) return;
   document.getElementById('ePId').value=p.id; document.getElementById('pNome').value=p.nome;
   document.getElementById('pTurma').value=p.turma; document.getElementById('pPer').value=p.periodo;
-  document.getElementById('pPts').value=p.pts; document.getElementById('fPT').textContent='✏️ Editar Professora';
+  document.getElementById('pPts').value=p.pts; document.getElementById('fPT').textContent='✏️ Editar Professor(a)';
   document.getElementById('pNome').focus();
 }
 function delProf(id){
-  if(!confirm('Excluir esta professora?')) return;
-  D.p=D.p.filter(function(x){return x.id!==id;}); sv(); renderProfs(); rRank(); rDash(); toast('Professora removida.','warning');
+  if(!confirm('Excluir este(a) professor(a)?')) return;
+  D.p=D.p.filter(function(x){return x.id!==id;}); sv(); renderProfs(); rRank(); rDash(); toast('Professor(a) removido(a).','warning');
 }
 
-// HISTÓRICO
 function upFP(){
   var fp=document.getElementById('fProf'); if(!fp) return;
-  fp.innerHTML='<option value="">Todas</option>'+
+  fp.innerHTML='<option value="">Todos</option>'+
     D.p.slice().sort(function(a,b){return a.nome.localeCompare(b.nome);}).map(function(p){
       return'<option value="'+p.id+'">'+p.nome+'</option>';}).join('');
 }
@@ -600,8 +597,8 @@ function renderHist(){
   var tb=document.getElementById('hTable');
   if(!list.length){tb.innerHTML='<tr><td colspan="9"><div class="es"><div class="ei">📋</div><p>Nenhum registro</p></div></td></tr>';return;}
   tb.innerHTML=list.map(function(r){
-    var a=D.p.find(function(x){return x.id===r.aid;}); var s=D.p.find(function(x){return x.id===r.sid;});
-    var sc=r.st==='Confirmada'?'bs':r.st==='Recusou'?'bd':'bw'; var mc2=MCSS[r.mot]||'mo3';
+    var a=D.p.find(function(x){return x.id===r.aid;}), s=D.p.find(function(x){return x.id===r.sid;});
+    var sc=r.st==='Confirmada'?'bs':r.st==='Recusou'?'bd':'bw', mc2=MCSS[r.mot]||'mo3';
     return'<tr><td style="white-space:nowrap;font-weight:600">'+fD(r.di)+'</td>'+
       '<td style="font-weight:600">'+(a?a.nome:'—')+'</td>'+
       '<td><span class="chip">'+r.ta+'</span></td>'+
@@ -617,9 +614,9 @@ function renderHist(){
   }).join('');
 }
 function expCSV(){
-  var c='\uFEFFData,Ausente,Turma,Período,Motivo,Dias,Substituta,Status,Observações\n';
+  var c='\uFEFFData,Ausente,Turma,Período,Motivo,Dias,Substituto(a),Status,Observações\n';
   D.r.forEach(function(r){
-    var a=D.p.find(function(x){return x.id===r.aid;}); var s=D.p.find(function(x){return x.id===r.sid;});
+    var a=D.p.find(function(x){return x.id===r.aid;}), s=D.p.find(function(x){return x.id===r.sid;});
     c+='"'+fD(r.di)+'","'+(a?a.nome:'')+'","'+r.ta+'","'+r.pa+'","'+r.mot+'","'+r.dias+'","'+(s?s.nome:'')+'","'+r.st+'","'+(r.obs||'')+'"\n';
   });
   var a2=document.createElement('a');
@@ -628,7 +625,6 @@ function expCSV(){
   toast('CSV exportado!');
 }
 
-// INIT
 rDash(); rCal();
 </script>
 </body>
