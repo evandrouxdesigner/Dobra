@@ -42,7 +42,7 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--tx);m
 .cnav button:hover{background:var(--p);color:#fff}
 .cgrid{display:grid;grid-template-columns:repeat(7,1fr);padding:8px;gap:3px}
 .cdn{text-align:center;font-size:.69rem;font-weight:800;color:var(--t3);text-transform:uppercase;padding:6px 0}
-.cd{display:flex;flex-direction:column;align-items:stretch;padding:5px 3px 4px;border-radius:10px;cursor:pointer;transition:all .15s;min-height:86px;border:1.5px solid transparent;overflow:hidden}
+.cd{display:flex;flex-direction:column;align-items:stretch;padding:5px 3px 4px;border-radius:10px;cursor:pointer;transition:border .15s;min-height:var(--cell-h,86px);border:1.5px solid transparent;overflow:hidden}
 .cd:hover{background:var(--bg);border-color:var(--pl)}.cd.today{background:var(--p)}.cd.today .dn{color:#fff;font-weight:900}
 .cd.om{opacity:.22;pointer-events:none}.cd.hev{border-color:var(--pl);background:#f0faf7}.cd.sel{border-color:var(--ac)!important;background:var(--wl)!important}
 .dn{font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:700;color:var(--tx);text-align:center;margin-bottom:3px}
@@ -160,7 +160,18 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
   <div class="ssub">Clique em um dia para ver ou registrar. &nbsp;<span style="background:var(--ml);color:#c2410c;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">🌅 Manhã</span>&nbsp;<span style="background:var(--al);color:#4338ca;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">🌇 Tarde</span></div>
   <div class="g2">
     <div class="cwrap">
-      <div class="chd"><h3 id="calT"></h3><div class="cnav"><button onclick="chMon(-1)">‹</button><button onclick="goToday()">Hoje</button><button onclick="chMon(1)">›</button></div></div>
+      <div class="chd">
+        <h3 id="calT"></h3>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="display:flex;align-items:center;gap:5px;background:var(--bg);border:1px solid var(--br);border-radius:8px;padding:4px 8px">
+            <span style="font-size:.7rem;color:var(--t2);font-weight:700">Altura</span>
+            <button onclick="setCellH(-16)" style="width:22px;height:22px;border:none;background:none;cursor:pointer;font-size:.9rem;color:var(--p);font-weight:900;border-radius:4px" title="Diminuir">−</button>
+            <span id="cellHVal" style="font-size:.72rem;font-weight:800;color:var(--p);min-width:28px;text-align:center">86px</span>
+            <button onclick="setCellH(16)" style="width:22px;height:22px;border:none;background:none;cursor:pointer;font-size:.9rem;color:var(--p);font-weight:900;border-radius:4px" title="Aumentar">+</button>
+          </div>
+          <div class="cnav"><button onclick="chMon(-1)">‹</button><button onclick="goToday()">Hoje</button><button onclick="chMon(1)">›</button></div>
+        </div>
+      </div>
       <div class="cgrid" id="calG"></div>
     </div>
     <div class="card">
@@ -307,7 +318,22 @@ var cMon = new Date().getMonth(), cYr = new Date().getFullYear(), selDate = null
 var TUR = {'Berçário II A':'i','Berçário II B':'i','Maternal I A':'i','Maternal I B':'i','Maternal I C':'i','Maternal I D':'i','Maternal II A':'m','Maternal II B':'m','Maternal II C':'t','Maternal II D':'t'};
 var MCSS = {'Abonada':'ma','Licença Médica (CLM)':'mc3','Licença Maternidade':'mm','Licença Gala':'mg','Licença Nojo':'mn','Outro':'mo3'};
 
-function sv() { localStorage.setItem('neim5', JSON.stringify(D)); }
+var cellH = parseInt(localStorage.getItem('neim_cellH') || '86');
+
+function setCellH(delta){
+  cellH = Math.min(200, Math.max(54, cellH + delta));
+  localStorage.setItem('neim_cellH', cellH);
+  document.getElementById('cellHVal').textContent = cellH+'px';
+  document.querySelector('.cgrid').style.setProperty('--cell-h', cellH+'px');
+  // também propaga para as células já renderizadas
+  document.querySelectorAll('.cd').forEach(function(el){ el.style.minHeight = cellH+'px'; });
+}
+
+function applyCellH(){
+  document.getElementById('cellHVal').textContent = cellH+'px';
+  var g = document.querySelector('.cgrid');
+  if(g) g.style.setProperty('--cell-h', cellH+'px');
+}
 function gId() { return Date.now().toString(36) + Math.random().toString(36).substr(2,5); }
 function fD(s) { if(!s) return '—'; var p = s.split('-'); return p[2]+'/'+p[1]+'/'+p[0]; }
 function opp(p) { return p === 'Manhã' ? 'Tarde' : 'Manhã'; }
@@ -399,20 +425,22 @@ function rCal() {
     var iT=d===td.getDate()&&cMon===td.getMonth()&&cYr===td.getFullYear(), iS=selDate===ds;
     var evHtml='';
     if(sbs.length){
+      var maxVis = Math.max(1, Math.floor((cellH - 28) / 30));
       evHtml='<div class="cd-events">';
-      sbs.slice(0,2).forEach(function(r){
+      sbs.slice(0,maxVis).forEach(function(r){
         var cls=r.pa==='Manhã'?'m':'a';
         var aus=prim(r.aid), sub=prim(r.sid);
         evHtml+='<div class="cd-ev '+cls+'" title="'+aus+' → '+sub+'">'+aus+'</div>';
         evHtml+='<div class="cd-ev '+cls+'" style="opacity:.75" title="'+aus+' → '+sub+'">↳ '+sub+'</div>';
       });
-      if(sbs.length>2) evHtml+='<div style="font-size:.52rem;color:var(--t2);text-align:center;padding:1px">+' +(sbs.length-2)+' mais</div>';
+      if(sbs.length>maxVis) evHtml+='<div style="font-size:.52rem;color:var(--t2);text-align:center;padding:1px">+' +(sbs.length-maxVis)+' mais</div>';
       evHtml+='</div>';
     }
     h+='<div class="cd'+(iT?' today':'')+(sbs.length?' hev':'')+(iS?' sel':'')+'" onclick="selD(\''+ds+'\')">'+
       '<div class="dn" style="'+(iT?'color:#fff':'')+'">'+d+'</div>'+evHtml+'</div>';
   }
   document.getElementById('calG').innerHTML=h;
+  applyCellH();
   if(selDate) rDay(selDate);
 }
 
@@ -640,7 +668,7 @@ function expCSV(){
   toast('CSV exportado!');
 }
 
-rDash(); rCal();
+rDash(); rCal(); applyCellH();
 </script>
 </body>
 </html>
