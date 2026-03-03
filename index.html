@@ -288,7 +288,21 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
 </div>
 
 <script>
-var D = JSON.parse(localStorage.getItem('neim5') || '{"p":[],"r":[]}');
+// Recupera dados de versões anteriores automaticamente
+var D = (function(){
+  var chaves = ['neim5','neim4','neim3','neim2','neim_v2','neim_data'];
+  for(var i=0;i<chaves.length;i++){
+    var v = localStorage.getItem(chaves[i]);
+    if(v){ try{ var d=JSON.parse(v); if(d&&(d.p||d.professoras)){
+      // normaliza chave para professoras antigas
+      if(d.professoras&&!d.p){ d.p=d.professoras.map(function(x){ return {id:x.id,nome:x.nome,turma:x.turma,periodo:x.periodo,pts:x.pontos||0}; }); }
+      if(d.registros&&!d.r){ d.r=d.registros.map(function(x){ return {id:x.id,aid:x.ausenteId,ta:x.turmaAusente,pa:x.periodoAusente,mot:x.motivo,di:x.dataIni,dias:x.dias,sid:x.substitutaId,st:x.status,obs:x.obs,cr:x.criadoEm}; }); }
+      if(!d.r) d.r=[];
+      return d;
+    } }catch(e){} }
+  }
+  return {p:[],r:[]};
+})();
 var cMon = new Date().getMonth(), cYr = new Date().getFullYear(), selDate = null, editId = null, pTab = 'todas';
 var TUR = {'Berçário II A':'i','Berçário II B':'i','Maternal I A':'i','Maternal I B':'i','Maternal I C':'i','Maternal I D':'i','Maternal II A':'m','Maternal II B':'m','Maternal II C':'t','Maternal II D':'t'};
 var MCSS = {'Abonada':'ma','Licença Médica (CLM)':'mc3','Licença Maternidade':'mm','Licença Gala':'mg','Licença Nojo':'mn','Outro':'mo3'};
