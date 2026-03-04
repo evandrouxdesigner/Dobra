@@ -183,18 +183,18 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
 
 <!-- RANKING -->
 <section class="sec" id="sec-ranking">
-  <div class="stit">Fila de Equidade — Ranking</div><div class="ssub">Menor pontuação = prioridade. Quem recusa é movido(a) para o final automaticamente.</div>
+  <div class="stit">Fila de Equidade — Ranking</div><div class="ssub">Menor pontuação = prioridade. Cada <strong>dobra aceita = 1 ponto</strong>, independente da quantidade de dias. Quem recusa é movido(a) para o final automaticamente.</div>
   <div class="g2" style="margin-bottom:20px">
     <div class="card"><div class="ch"><span>🌅</span><h2>Fila — Manhã</h2><span style="margin-left:auto;font-size:.73rem;color:var(--t2)">↓ prioridade</span></div><div id="rkM"><div class="es"><div class="ei">🧑‍🏫</div><p>Cadastre professores</p></div></div></div>
     <div class="card"><div class="ch"><span>🌇</span><h2>Fila — Tarde</h2><span style="margin-left:auto;font-size:.73rem;color:var(--t2)">↓ prioridade</span></div><div id="rkT"><div class="es"><div class="ei">🧑‍🏫</div><p>Cadastre professores</p></div></div></div>
   </div>
   <div class="card"><div class="ch"><span>✏️</span><h2>Ajuste Manual de Pontuação</h2></div>
     <div class="cb">
-      <div class="al ai">ℹ️ Ajuste manual de pontos. O sistema atualiza automaticamente ao confirmar ou registrar recusa.</div>
+      <div class="al ai">ℹ️ Ajuste manual de dobras. O sistema contabiliza <strong>1 dobra por oferta aceita</strong>, independente dos dias de substituição.</div>
       <div class="fr t3">
         <div class="fg"><label>Professor(a)</label><select id="ajPr"><option value="">Selecione...</option></select></div>
         <div class="fg"><label>Operação</label><select id="ajOp"><option value="set">Definir valor</option><option value="add">Adicionar</option><option value="sub">Subtrair</option></select></div>
-        <div class="fg"><label>Pontos</label><input type="number" id="ajPts" min="0" value="1"></div>
+        <div class="fg"><label>Dobras</label><input type="number" id="ajPts" min="0" value="1"></div>
       </div>
       <button class="btn bp" onclick="ajustarPts()">💾 Salvar Ajuste</button>
     </div>
@@ -208,17 +208,48 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
     <div class="card"><div class="ch"><span>➕</span><h2 id="fPT">Novo(a) Professor(a)</h2></div>
       <div class="cb">
         <input type="hidden" id="ePId">
+        <div class="fr full">
+          <div class="fg">
+            <label>Selecionar da lista ↓</label>
+            <select id="pNomeSel" onchange="onNomeSel()">
+              <option value="">— Escolha ou digite o nome abaixo —</option>
+              <optgroup label="🌇 Substituem MANHÃ (trabalham Tarde)">
+                <option>ALLANA</option><option>ANA CRISTINA</option><option>RAQUEL</option>
+                <option>LUCIANE</option><option>SORAIA R.</option><option>VIVIANE</option><option>JAIANE</option>
+              </optgroup>
+              <optgroup label="🌅 Substituem TARDE (trabalham Manhã)">
+                <option>ROSIRENE</option><option>SHEILA</option><option>RAFAELA</option>
+                <option>MÁRCIA</option><option>ALINE C.</option><option>NÍVEA</option>
+                <option>NATÁLIA</option><option>TÂNIA</option><option>SORAIA C.</option>
+                <option>SILVÂNIA</option><option>VANESSA</option>
+              </optgroup>
+              <optgroup label="🚫 Só ausentes (não dobram)">
+                <option>ADRIANE</option><option>ALEXSANDRA</option><option>RO PEREIRA</option>
+                <option>RO PINHEIRO</option><option>ANA PAULA</option><option>MARICY</option>
+                <option>JANETE</option><option>EVELYN</option><option>FE CUNHA</option>
+              </optgroup>
+              <optgroup label="🏥 De licença">
+                <option>ROSIMEIRE</option><option>FE LOUISE</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
         <div class="fr">
-          <div class="fg"><label>Nome completo *</label><input type="text" id="pNome" placeholder="Ex: Maria das Graças Silva"></div>
+          <div class="fg"><label>Nome completo *</label><input type="text" id="pNome" placeholder="Ou digite aqui..."></div>
           <div class="fg"><label>Turma *</label><select id="pTurma"><option value="">Selecione...</option><option>Berçário II A</option><option>Berçário II B</option><option>Maternal I A</option><option>Maternal I B</option><option>Maternal I C</option><option>Maternal I D</option><option>Maternal II A</option><option>Maternal II B</option><option>Maternal II C</option><option>Maternal II D</option></select></div>
         </div>
         <div class="fr">
           <div class="fg"><label>Período *</label><select id="pPer"><option value="">Selecione...</option><option value="Manhã">🌅 Manhã</option><option value="Tarde">🌇 Tarde</option></select></div>
+          <div class="fg"><label>Pode substituir?</label><select id="pPodeSub"><option value="sim">✅ Sim — entra na fila</option><option value="nao">🚫 Não — só pode ser ausente</option><option value="licenca">🏥 De licença</option></select></div>
+        </div>
+        <div class="fr">
           <div class="fg"><label>Pontuação inicial</label><input type="number" id="pPts" min="0" value="0"></div>
+          <div class="fg"><label>Posição na fila <span style="font-size:.68rem;color:var(--t2)">(menor = prioridade)</span></label><input type="number" id="pOrdem" min="1" value="99"></div>
         </div>
         <div style="display:flex;gap:10px;margin-top:4px">
           <button class="btn bp" onclick="salvarProf()">💾 Salvar</button>
           <button class="btn bgh" onclick="cancelProf()">✕ Cancelar</button>
+          <button class="btn bgh" onclick="cadastrarTodos()" style="margin-left:auto" title="Cadastra todos os nomes da lista com dados padrão">⚡ Pré-cadastrar todos</button>
         </div>
       </div>
     </div>
@@ -228,9 +259,11 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
           <button class="tb active" onclick="setPTab('todas',this)">Todos</button>
           <button class="tb" onclick="setPTab('manha',this)">🌅 Manhã</button>
           <button class="tb" onclick="setPTab('tarde',this)">🌇 Tarde</button>
+          <button class="tb" onclick="setPTab('nao',this)">🚫 Não dobram</button>
+          <button class="tb" onclick="setPTab('licenca',this)">🏥 Licença</button>
         </div>
         <div class="sb2"><input type="text" id="pSrch" placeholder="Buscar professor..." oninput="renderProfs()"></div>
-        <div id="pList" style="max-height:350px;overflow-y:auto;display:flex;flex-direction:column;gap:7px"></div>
+        <div id="pList" style="max-height:400px;overflow-y:auto;display:flex;flex-direction:column;gap:7px"></div>
       </div>
     </div>
   </div>
@@ -364,7 +397,13 @@ function closeMo(id) { document.getElementById(id).classList.remove('open'); }
 function getElig(aid) {
   var a = D.p.find(function(x){ return x.id===aid; });
   if(!a) return [];
-  return D.p.filter(function(x){ return x.id!==aid && x.periodo===opp(a.periodo); }).sort(function(a,b){ return a.pts-b.pts; });
+  return D.p
+    .filter(function(x){ return x.id!==aid && x.periodo===opp(a.periodo) && x.podeSub==='sim'; })
+    .sort(function(a,b){
+      // ordenar por pontos primeiro, depois pela ordem fixa da fila
+      if(a.pts!==b.pts) return a.pts-b.pts;
+      return (a.ordem||99)-(b.ordem||99);
+    });
 }
 
 function rDash() {
@@ -481,9 +520,17 @@ function openSubModal(){
   document.getElementById('sDias').value=1; document.getElementById('sSt').value='Confirmada';
   document.getElementById('sInd').style.display='none'; document.getElementById('mAlert').style.display='none';
   document.getElementById('sSub').innerHTML='<option value="">Selecione...</option>';
-  document.getElementById('sAus').innerHTML='<option value="">Selecione...</option>'+
-    D.p.slice().sort(function(a,b){return a.nome.localeCompare(b.nome);}).map(function(p){
-      return'<option value="'+p.id+'">'+p.nome+' — '+p.turma+' ('+p.periodo+')</option>';}).join('');
+
+  // Montar select de ausentes com grupos
+  var grpSim  = D.p.filter(function(p){return p.podeSub==='sim';}).sort(function(a,b){return a.nome.localeCompare(b.nome);});
+  var grpNao  = D.p.filter(function(p){return p.podeSub==='nao';}).sort(function(a,b){return a.nome.localeCompare(b.nome);});
+  var grpLic  = D.p.filter(function(p){return p.podeSub==='licenca';}).sort(function(a,b){return a.nome.localeCompare(b.nome);});
+  function opts(list){ return list.map(function(p){return'<option value="'+p.id+'">'+p.nome+(p.turma?' — '+p.turma:'')+' ('+p.periodo+')</option>';}).join(''); }
+  var html = '<option value="">Selecione...</option>';
+  if(grpSim.length)  html += '<optgroup label="✅ Entram na fila">'+opts(grpSim)+'</optgroup>';
+  if(grpNao.length)  html += '<optgroup label="🚫 Não dobram">'+opts(grpNao)+'</optgroup>';
+  if(grpLic.length)  html += '<optgroup label="🏥 De licença">'+opts(grpLic)+'</optgroup>';
+  document.getElementById('sAus').innerHTML = html;
   openMo('mSub');
 }
 
@@ -512,7 +559,7 @@ function salvarReg(){
   if(a&&s&&a.periodo===s.periodo){ toast('O(A) substituto(a) deve ser do período oposto!','error'); return; }
   var reg={id:editId||gId(),aid:aid,ta:a?a.turma:'',pa:a?a.periodo:'',mot:mot,di:di,dias:parseInt(dias),sid:sid,st:st,obs:obs,cr:new Date().toISOString()};
   if(editId){ var i=D.r.findIndex(function(r){return r.id===editId;}); D.r[i]=reg; } else D.r.push(reg);
-  if(st==='Confirmada'&&s) s.pts+=parseInt(dias);
+  if(st==='Confirmada'&&s) s.pts+=1; // 1 ponto por oferta (dobra), independente dos dias
   else if(st==='Recusou'&&s){ var mx=0; D.p.forEach(function(x){if(x.pts>mx)mx=x.pts;}); s.pts=mx+100; toast('Professor(a) recusou — movido(a) para o final da fila!','warning'); }
   sv(); closeMo('mSub'); toast('Registro salvo!'); rCal(); rDash(); rRank();
 }
@@ -549,76 +596,172 @@ function rRank(){
       var rc=i===0?'r1':i===1?'r2':i===2?'r3':'ro', em=i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1);
       return '<div class="rr"><div class="rn '+rc+'">'+em+'</div>'+
         '<div style="flex:1;min-width:0"><div style="font-weight:700;font-size:.89rem">'+p.nome+'</div>'+
-        '<div style="font-size:.74rem;color:var(--t2)">'+p.turma+'</div>'+
+        '<div style="font-size:.74rem;color:var(--t2)">'+(p.turma||'sem turma')+'</div>'+
         '<div class="rbar"><div class="rbf" style="width:'+(p.pts/mx*100)+'%"></div></div></div>'+
         '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">'+
-        '<div style="font-family:\'Nunito\',sans-serif;font-weight:900;font-size:1rem;color:var(--p)">'+p.pts+' pts</div>'+
+        '<div style="font-family:\'Nunito\',sans-serif;font-weight:900;font-size:1rem;color:var(--p)">'+p.pts+'</div>'+
+        '<div style="font-size:.64rem;color:var(--t2);font-weight:700">'+(p.pts===1?'dobra':'dobras')+'</div>'+
         (i===0?'<span class="nbdg">PRÓXIMO(A)</span>':'')+'</div></div>';
     }).join('');
   }
-  bld(D.p.filter(function(x){return x.periodo==='Manhã';}).sort(function(a,b){return a.pts-b.pts;}),'rkM');
-  bld(D.p.filter(function(x){return x.periodo==='Tarde';}).sort(function(a,b){return a.pts-b.pts;}),'rkT');
+  // Apenas quem pode substituir, ordenado por pontos depois por ordem fixa
+  function filtraOrdena(per){
+    return D.p.filter(function(x){return x.periodo===per&&x.podeSub==='sim';})
+      .sort(function(a,b){ if(a.pts!==b.pts)return a.pts-b.pts; return (a.ordem||99)-(b.ordem||99); });
+  }
+  bld(filtraOrdena('Manhã'),'rkM');
+  bld(filtraOrdena('Tarde'),'rkT');
   document.getElementById('ajPr').innerHTML='<option value="">Selecione...</option>'+
-    D.p.slice().sort(function(a,b){return a.nome.localeCompare(b.nome);}).map(function(p){
-      return'<option value="'+p.id+'">'+p.nome+' ('+p.pts+' pts)</option>';}).join('');
+    D.p.filter(function(p){return p.podeSub==='sim';})
+      .slice().sort(function(a,b){return a.nome.localeCompare(b.nome);}).map(function(p){
+        return'<option value="'+p.id+'">'+p.nome+' ('+p.pts+' dobra(s))</option>';}).join('');
 }
 function ajustarPts(){
   var id=document.getElementById('ajPr').value, op=document.getElementById('ajOp').value, pts=parseInt(document.getElementById('ajPts').value);
   if(!id||isNaN(pts)){toast('Selecione um professor e informe os pontos!','error');return;}
   var p=D.p.find(function(x){return x.id===id;}); if(!p) return;
   if(op==='set') p.pts=pts; else if(op==='add') p.pts+=pts; else p.pts=Math.max(0,p.pts-pts);
-  sv(); rRank(); toast('Pontuação de '+p.nome.split(' ')[0]+' atualizada para '+p.pts+' pts!');
+  sv(); rRank(); toast('Dobras de '+p.nome.split(' ')[0]+' atualizadas para '+p.pts+'!');
+}
+
+// Mapa de nomes pré-definidos com período automático e ordem na fila
+var LISTA_PROFS = {
+  'ALLANA':      {periodo:'Tarde', podeSub:'sim', ordem:1},
+  'ANA CRISTINA':{periodo:'Tarde', podeSub:'sim', ordem:2},
+  'RAQUEL':      {periodo:'Tarde', podeSub:'sim', ordem:3},
+  'LUCIANE':     {periodo:'Tarde', podeSub:'sim', ordem:4},
+  'SORAIA R.':   {periodo:'Tarde', podeSub:'sim', ordem:5},
+  'VIVIANE':     {periodo:'Tarde', podeSub:'sim', ordem:6},
+  'JAIANE':      {periodo:'Tarde', podeSub:'sim', ordem:7},
+  'ROSIRENE':    {periodo:'Manhã', podeSub:'sim', ordem:1},
+  'SHEILA':      {periodo:'Manhã', podeSub:'sim', ordem:2},
+  'RAFAELA':     {periodo:'Manhã', podeSub:'sim', ordem:3},
+  'MÁRCIA':      {periodo:'Manhã', podeSub:'sim', ordem:4},
+  'ALINE C.':    {periodo:'Manhã', podeSub:'sim', ordem:5},
+  'NÍVEA':       {periodo:'Manhã', podeSub:'sim', ordem:6},
+  'NATÁLIA':     {periodo:'Manhã', podeSub:'sim', ordem:7},
+  'TÂNIA':       {periodo:'Manhã', podeSub:'sim', ordem:8},
+  'SORAIA C.':   {periodo:'Manhã', podeSub:'sim', ordem:9},
+  'SILVÂNIA':    {periodo:'Manhã', podeSub:'sim', ordem:10},
+  'VANESSA':     {periodo:'Manhã', podeSub:'sim', ordem:11},
+  'ADRIANE':     {periodo:'Manhã', podeSub:'nao', ordem:99},
+  'ALEXSANDRA':  {periodo:'Manhã', podeSub:'nao', ordem:99},
+  'RO PEREIRA':  {periodo:'Manhã', podeSub:'nao', ordem:99},
+  'RO PINHEIRO': {periodo:'Tarde', podeSub:'nao', ordem:99},
+  'ANA PAULA':   {periodo:'Manhã', podeSub:'nao', ordem:99},
+  'MARICY':      {periodo:'Manhã', podeSub:'nao', ordem:99},
+  'JANETE':      {periodo:'Manhã', podeSub:'nao', ordem:99},
+  'EVELYN':      {periodo:'Tarde', podeSub:'nao', ordem:99},
+  'FE CUNHA':    {periodo:'Tarde', podeSub:'nao', ordem:99},
+  'ROSIMEIRE':   {periodo:'Manhã', podeSub:'licenca', ordem:99},
+  'FE LOUISE':   {periodo:'Manhã', podeSub:'licenca', ordem:99}
+};
+
+function onNomeSel(){
+  var nome = document.getElementById('pNomeSel').value;
+  if(!nome) return;
+  document.getElementById('pNome').value = nome;
+  var info = LISTA_PROFS[nome];
+  if(info){
+    document.getElementById('pPer').value = info.periodo;
+    document.getElementById('pPodeSub').value = info.podeSub;
+    document.getElementById('pOrdem').value = info.ordem;
+  }
+}
+
+function cadastrarTodos(){
+  if(!confirm('Isso vai pré-cadastrar TODOS os professores da lista que ainda não foram cadastrados.\nTurma ficará em branco — você deverá preencher depois.\nDeseja continuar?')) return;
+  var adicionados = 0;
+  Object.keys(LISTA_PROFS).forEach(function(nome){
+    var jaExiste = D.p.find(function(x){ return x.nome===nome; });
+    if(!jaExiste){
+      var info = LISTA_PROFS[nome];
+      D.p.push({id:gId(), nome:nome, turma:'', periodo:info.periodo, pts:0, podeSub:info.podeSub, ordem:info.ordem});
+      adicionados++;
+    }
+  });
+  sv(); renderProfs(); rRank(); rDash();
+  toast(adicionados+' professor(es) pré-cadastrado(s)! Edite cada um para definir a turma.', adicionados>0?'':'warning');
 }
 
 function salvarProf(){
   var nome=document.getElementById('pNome').value.trim(), turma=document.getElementById('pTurma').value,
     per=document.getElementById('pPer').value, pts=parseInt(document.getElementById('pPts').value)||0,
+    podeSub=document.getElementById('pPodeSub').value, ordem=parseInt(document.getElementById('pOrdem').value)||99,
     eid=document.getElementById('ePId').value;
-  if(!nome||!turma||!per){toast('Preencha nome, turma e período!','error');return;}
+  if(!nome||!per){toast('Preencha pelo menos nome e período!','error');return;}
   var tt=TUR[turma];
-  if(tt==='m'&&per!=='Manhã'){toast(turma+' é uma turma de Manhã!','error');return;}
-  if(tt==='t'&&per!=='Tarde'){toast(turma+' é uma turma de Tarde!','error');return;}
-  if(eid){var p=D.p.find(function(x){return x.id===eid;});if(p){p.nome=nome;p.turma=turma;p.periodo=per;p.pts=pts;}}
-  else D.p.push({id:gId(),nome:nome,turma:turma,periodo:per,pts:pts});
+  if(turma&&tt==='m'&&per!=='Manhã'){toast(turma+' é uma turma de Manhã!','error');return;}
+  if(turma&&tt==='t'&&per!=='Tarde'){toast(turma+' é uma turma de Tarde!','error');return;}
+  if(eid){
+    var p=D.p.find(function(x){return x.id===eid;});
+    if(p){p.nome=nome;p.turma=turma;p.periodo=per;p.pts=pts;p.podeSub=podeSub;p.ordem=ordem;}
+  } else {
+    if(D.p.find(function(x){return x.nome.toLowerCase()===nome.toLowerCase();})){
+      toast('Já existe um professor com este nome!','error'); return;
+    }
+    D.p.push({id:gId(),nome:nome,turma:turma,periodo:per,pts:pts,podeSub:podeSub,ordem:ordem});
+  }
   sv(); cancelProf(); renderProfs(); rRank(); rDash(); toast(eid?'Professor(a) atualizado(a)!':'Professor(a) cadastrado(a)!');
 }
+
 function cancelProf(){
   ['ePId','pNome','pTurma','pPer'].forEach(function(id){document.getElementById(id).value='';});
-  document.getElementById('pPts').value=0; document.getElementById('fPT').textContent='Novo(a) Professor(a)';
+  document.getElementById('pPts').value=0;
+  document.getElementById('pOrdem').value=99;
+  document.getElementById('pPodeSub').value='sim';
+  document.getElementById('pNomeSel').value='';
+  document.getElementById('fPT').textContent='Novo(a) Professor(a)';
 }
+
 function setPTab(tab,btn){
   pTab=tab;
   document.querySelectorAll('#sec-professores .tb').forEach(function(b){b.classList.remove('active');});
   btn.classList.add('active'); renderProfs();
 }
+
 function renderProfs(){
   var srch=(document.getElementById('pSrch')?document.getElementById('pSrch').value:'').toLowerCase();
   var list=D.p.slice();
-  if(pTab==='manha') list=list.filter(function(p){return p.periodo==='Manhã';});
-  if(pTab==='tarde') list=list.filter(function(p){return p.periodo==='Tarde';});
-  if(srch) list=list.filter(function(p){return p.nome.toLowerCase().includes(srch)||p.turma.toLowerCase().includes(srch);});
-  list.sort(function(a,b){return a.nome.localeCompare(b.nome);});
+  if(pTab==='manha') list=list.filter(function(p){return p.periodo==='Manhã'&&p.podeSub==='sim';});
+  else if(pTab==='tarde') list=list.filter(function(p){return p.periodo==='Tarde'&&p.podeSub==='sim';});
+  else if(pTab==='nao') list=list.filter(function(p){return p.podeSub==='nao';});
+  else if(pTab==='licenca') list=list.filter(function(p){return p.podeSub==='licenca';});
+  if(srch) list=list.filter(function(p){return p.nome.toLowerCase().includes(srch)||(p.turma||'').toLowerCase().includes(srch);});
+  list.sort(function(a,b){ var oa=(a.ordem||99),ob=(b.ordem||99); return oa!==ob?oa-ob:a.nome.localeCompare(b.nome); });
   document.getElementById('pCnt').textContent=D.p.length;
   var el=document.getElementById('pList');
   if(!list.length){el.innerHTML='<div class="es"><div class="ei">🧑‍🏫</div><p>Nenhum professor encontrado</p></div>';return;}
   el.innerHTML=list.map(function(p){
     var pb=p.periodo==='Manhã'?'<span class="badge bm">🌅 Manhã</span>':'<span class="badge ba">🌇 Tarde</span>';
+    var ps=p.podeSub==='nao'?'<span class="badge bw" style="font-size:.65rem">🚫 Não dobra</span>':
+           p.podeSub==='licenca'?'<span class="badge" style="background:#f0fdf4;color:#166534;font-size:.65rem">🏥 Licença</span>':'';
+    var turmaLabel = p.turma ? '<span class="chip">'+p.turma+'</span> ' : '<span style="font-size:.7rem;color:var(--t3)">sem turma</span> ';
     return'<div class="pc"><div class="pav">'+p.nome.charAt(0).toUpperCase()+'</div>'+
-      '<div class="pinf"><div class="pnm">'+p.nome+'</div><div class="pmt">'+p.turma+' '+pb+'</div></div>'+
-      '<div class="ppts">'+p.pts+'<span style="font-size:.63rem;color:var(--t2)"> pts</span></div>'+
+      '<div class="pinf"><div class="pnm">'+p.nome+'</div>'+
+      '<div class="pmt" style="display:flex;gap:4px;flex-wrap:wrap;align-items:center">'+turmaLabel+pb+' '+ps+'</div></div>'+
+      (p.podeSub==='sim'?'<div class="ppts">'+p.pts+'<span style="font-size:.63rem;color:var(--t2)"> dobras</span></div>':'')+
       '<div style="display:flex;gap:4px">'+
       '<button class="btn bgh bic bsm" onclick="editProf(\''+p.id+'\')" title="Editar">✏️</button>'+
       '<button class="btn bgh bic bsm" onclick="delProf(\''+p.id+'\')" title="Excluir">🗑️</button>'+
       '</div></div>';
   }).join('');
 }
+
 function editProf(id){
   var p=D.p.find(function(x){return x.id===id;}); if(!p) return;
-  document.getElementById('ePId').value=p.id; document.getElementById('pNome').value=p.nome;
-  document.getElementById('pTurma').value=p.turma; document.getElementById('pPer').value=p.periodo;
-  document.getElementById('pPts').value=p.pts; document.getElementById('fPT').textContent='✏️ Editar Professor(a)';
+  document.getElementById('ePId').value=p.id;
+  document.getElementById('pNome').value=p.nome;
+  document.getElementById('pTurma').value=p.turma||'';
+  document.getElementById('pPer').value=p.periodo;
+  document.getElementById('pPts').value=p.pts;
+  document.getElementById('pPodeSub').value=p.podeSub||'sim';
+  document.getElementById('pOrdem').value=p.ordem||99;
+  document.getElementById('pNomeSel').value='';
+  document.getElementById('fPT').textContent='✏️ Editar Professor(a)';
   document.getElementById('pNome').focus();
 }
+
 function delProf(id){
   if(!confirm('Excluir este(a) professor(a)?')) return;
   D.p=D.p.filter(function(x){return x.id!==id;}); sv(); renderProfs(); rRank(); rDash(); toast('Professor(a) removido(a).','warning');
